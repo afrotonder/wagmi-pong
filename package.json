@@ -1,0 +1,25 @@
+{
+  "name": "wagmi_pong",
+  "version": "1.0.0",
+  "description": "testing phaser",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moralis": "^1.5.5",
+    "parcel-bundler": "^1.12.5",
+    "parsel": "^0.3.0",
+    "phaser": "^3.55.2",
+    "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "parcel-plugin-static-files-copy": "^2.6.0"
+  },
+  "staticFiles": {
+    "staticPath": "Public",
+    "watcherGlob": "**"
+  }
+}
