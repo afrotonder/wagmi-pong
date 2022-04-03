@@ -35,29 +35,32 @@ const config = {
     game.scene.add(SceneKeys.Preload, Preload)
 
 
-document.getElementById('walletID').addEventListener('input', function(event) {
-    console.log('EJE ', event.target.value.length);
-    // console.log(document.getElementById('walletID'))
-    if (event.target.value.length === 42) {
-        wagmiballz.getUserNFTs(event.target.value).then((result) => {
-            console.log(result);
-            console.log('hiolssssssssssssssssssssssssss');
-            document.getElementsByClassName('tvContainer')[0].style.display = 'none'
-            document.getElementsByClassName('connectWallet')[0].style.display = 'none'
-            document.querySelectorAll('canvas')[0].style.display = 'flex'
+// document.getElementById('walletID').addEventListener('input', function(event) {
+//     console.log('EJE ', event.target.value.length);
+//     // console.log(document.getElementById('walletID'))
+//     if (event.target.value.length === 42) {
+//         wagmiballz.getUserNFTs(event.target.value).then((result) => {
+//             console.log(result);
+//             console.log('hiolssssssssssssssssssssssssss');
+//             document.getElementsByClassName('tvContainer')[0].style.display = 'none'
+//             document.getElementsByClassName('connectWallet')[0].style.display = 'none'
+//             document.querySelectorAll('canvas')[0].style.display = 'flex'
    
 
 
-        // game.scene.start('titleScreen')
+//         // game.scene.start('titleScreen')
 
-        game.scene.start(SceneKeys.Preload)
-        }).catch((err) => {
+//         game.scene.start(SceneKeys.Preload)
+//         }).catch((err) => {
             
-        });
+//         });
 
 
 
 
 
-    }
-})
+//     }
+// })
+
+
+

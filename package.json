@@ -16,7 +16,8 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
-    "parcel-plugin-static-files-copy": "^2.6.0"
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "typescript": "^4.6.3"
   },
   "staticFiles": {
     "staticPath": "Public",

@@ -19,7 +19,7 @@ export default class TitleScreen extends Phaser.Scene {
         this.sound.loop = true
         // this.sound.play(Audio.Title)
 
-        const title = this.add.text(400, 200, 'WAGMI PONG',
+        const title = this.add.text(400, 200, 'Paddlez',
             {
                 fontSize: 50,
                 fontFamily: SceneKeys.Font
