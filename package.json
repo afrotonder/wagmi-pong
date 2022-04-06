@@ -1,5 +1,5 @@
 {
-  "name": "wagmi_pong",
+  "name": "paddlez",
   "version": "1.0.0",
   "description": "testing phaser",
   "main": "index.js",
@@ -9,10 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "moralis": "^1.5.5",
+    "firebase": "^9.6.10",
+    "moralis": "^1.5.8",
     "parcel-bundler": "^1.12.5",
     "parsel": "^0.3.0",
     "phaser": "^3.55.2",
+    "sweetalert2": "^11.4.8",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {

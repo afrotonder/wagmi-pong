@@ -5,12 +5,18 @@ import Game from './scenes/Game'
 import GameBackground from './scenes/GameBackground'
 import GameOver from './scenes/GameOver'
 import Preload from './scenes/Preload'
+import Pause from './scenes/Pause'
 import * as SceneKeys from './constants/SceneKeys'
 import * as wagmiballz from './constants/wagmiballz'
+import { firebaseConfig } from '../environment.prod';
+
+import { initializeApp } from 'firebase/app';
+const app = initializeApp(firebaseConfig);
 
 // import Moralis from 'moralis/dist/moralis.min.js';
 // WAGMI
 // var wagmiballz = []
+// @ts-ignore
 
 const config = {
     width: 800,
@@ -33,6 +39,16 @@ const config = {
     game.scene.add(SceneKeys.GameBackground, GameBackground)
     game.scene.add(SceneKeys.GameOver, GameOver)
     game.scene.add(SceneKeys.Preload, Preload)
+    game.scene.add(SceneKeys.Pause, Pause)
+
+    // game.scene.start('titleScreen')
+    // game.scene.start(SceneKeys.Preload)
+
+document.getElementById('done').addEventListener('click', function(event) {
+    // alert('vammoajugal')
+     game.scene.start('titleScreen')
+    game.scene.start(SceneKeys.Preload)
+})
 
 
 // document.getElementById('walletID').addEventListener('input', function(event) {

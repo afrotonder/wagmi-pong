@@ -1,0 +1,180 @@
+/* <style> */
+* {
+  /* font-family: "Press Start 2P", Impact, Haettenschweiler,
+    "Arial Narrow Bold", sans-serif; */
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.openSea {
+ display: none; 
+}
+
+.tvContainer {
+  /* z-index: 10000000 !important;
+
+          margin-top: 2%;
+          overflow: hidden;
+          display: flex;
+          justify-content: center; */
+  background: linear-gradient(297deg, #000000, #3f4b72, #a8b6e3);
+  -webkit-animation: AnimationName 16s ease infinite;
+      -moz-animation: AnimationName 16s ease infinite;
+      animation: AnimationName 16s ease infinite;
+  width: 1000px;
+  height: 600px;
+  /* border-radius: 30%; */
+  /* background-size: 90%; */
+  /* margin-top: ; */
+  /* position: static; */
+  /* padding-right: 20%; */
+
+@-webkit-keyframes AnimationName {
+0%{background-position:9% 0%}
+50%{background-position:92% 100%}
+100%{background-position:9% 0%}
+}
+@-moz-keyframes AnimationName {
+0%{background-position:9% 0%}
+50%{background-position:92% 100%}
+100%{background-position:9% 0%}
+}
+@keyframes AnimationName {
+0%{background-position:9% 0%}
+50%{background-position:92% 100%}
+100%{background-position:9% 0%}
+}
+}
+
+.wagmiPong {
+  /* background: linear-gradient(297deg, #000000, #3f4b72, #a8b6e3); */
+  /* width: 900px; */
+  /* height: 600px; */
+  /* position: static; */
+  /* padding-right: 20%; */
+  margin-top: 6%;
+}
+
+.tv {
+  margin-top: -1%;
+  height: 555px;
+  width: 888px;
+  position: absolute;
+  z-index: 300 !important;
+  /* background:url('../public/assets/tv-frame.png'), linear-gradient(297deg, #000000, #3f4b72, #a8b6e3); */
+  background-image: url("../../public/assets/tv-frame.png");
+  background-size: 100% 100%;
+  padding-left: 10px;
+  margin-left: -10px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  /* background-clip: border-box; */
+  /* 
+      -webkit-animation: AnimationName 16s ease infinite;
+      -moz-animation: AnimationName 16s ease infinite;
+      animation: AnimationName 16s ease infinite; */
+}
+
+.connectButton {
+    margin: auto;
+  height: 40px;
+  text-align: center;
+  width: 200px;
+  border-radius: 10px;
+  /* border: none; */
+  color: white;
+  background-color: #252424;
+}
+
+.connectWallet {
+    /* position: absolute; */
+display: flex;
+justify-content: center;
+margin: 27% 17% 0 auto;
+/* background-color: red; */
+z-index: 1 !important;
+text-align: center;  
+}
+canvas {
+  display: none;
+  /* visibility: hidden; */
+  /* width: 87%;
+  height: 80%; */
+  margin-top: 10%;
+  /* border-radius: 12%; */
+  z-index: -1000;
+  position: absolute;
+  z-index: 10;
+
+
+  /* margin: 1% 0% 0% -5.3%;
+  width: 612px; */
+  height: 478px;
+
+  margin: 1% 0% 0% -4%;
+width: 657px;
+
+  /* margin: 1% 0% 0% -4%;
+  width: 700px;
+  height: 478px; */
+  /* margin: 8% 0% 0% 9%; */
+  /* margin: 4% 0% 0% -18%; */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+/* Styles */
+
+/* .tvContainer { */
+    /* z-index: 10000000 !important;
+
+          margin-top: 2%;
+          overflow: hidden;
+          display: flex;
+          justify-content: center; */
+    /* background: linear-gradient(297deg, #000000, #3f4b72, #a8b6e3); */
+    /* width: 800px; */
+    /* height: 485px; */
+    /* border-radius: 30%; */
+    /* background-size: 90%; */
+    /* margin-top: ; */
+    /* position: static; */
+    /* padding-right: 20%; */
+  /* } */
+}
+/* body { */
+/* position: relative; */
+@media screen and (min-width: 480px) {
+
+  .tvContainer {
+    /* z-index: 10000000 !important;
+
+          margin-top: 2%;
+          overflow: hidden;
+          display: flex;
+          justify-content: center; */
+          /* background-color: red; */
+    /* background: linear-gradient(297deg, #000000, #3f4b72, #a8b6e3); */
+    width: 800px;
+    height: 500px;
+    /* border-radius: 30%; */
+    /* background-size: 90%; */
+    /* margin-top: ; */
+    /* position: static; */
+    /* padding-right: 20%; */
+  }
+
+  canvas {
+      /* margin: 1% 0% 0% -5.3%; */
+      margin: 25px 0% 0% -85px;
+  width: 612px;
+  height: 478px;
+  z-index: 10;
+  }
+}
+
+
+/* </style> */

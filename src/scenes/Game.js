@@ -3,9 +3,11 @@ import * as SceneKeys from '../constants/SceneKeys'
 import * as Colors from '../constants/Colors'
 import * as Audio from '../constants/Audio'
 import * as wagmiballz from '../constants/wagmiballz'
+// import Pause from '../scenes/Pause'
 
 const GameState = {
     Running: 'running',
+    Paused: 'paused',
     PlayerWon: 'player-won',
     AIWon: 'ai-won'
 }
@@ -21,29 +23,42 @@ export default class Game extends Phaser.Scene {
     }
 
     preload() {
-        // this.load.atlas('cube', '../../public/assets/cube.png', '../../public/assets/cube.json');
 
-                this.load.image('wagmiball', '../../public/assets/cube.png');
-                // this.load.spritesheet('wagmiball', '../../public/assets/test.jpg', 37, 45, 18); //this.add.circle(400, 250, 20, Colors.white, 10)
 
             }
 
+    testingFunc() {
+        alert("DIMELOOOOo")
+    }
         
     create() {
+        // Phaser.Scene.call(this, { key: 'sceneA' });
 
-        console.log('jiojiba ', wagmiballz);
+
+        this.sound.loop = true
+        // this.sound.once('loop', function(music, loop){});
+
+        this.sound.play(Audio.Title)
+
+        // console.log('user wagmiballz ', wagmiballz);
+
+        let assets =  wagmiballz.wagmiballz.filter(ball => ball.traits.length > 0)
+        let color = assets[0].traits[1].value.replace('#', '0x')
+
+        // console.log('color ', color);
+        // TODO: add chooser
+        
+        // assets.forEach(element => {
+        //     console.log(element);
+        // });
 
         this.scene.run(SceneKeys.GameBackground)
+
         this.scene.sendToBack(SceneKeys.GameBackground)
 
         this.physics.world.setBounds(-100, 0, 1000, 500)
-        // this.physics.world.
-        // this.add.text(400, 250, 'Game')
-        // game.load.spritesheet('mummy', 'assets/sprites/metalslug_mummy37x45.png', 37, 45, 18);
-        // this.ball =         this.add.image(400, 300, 'wagmiball').setScale(1).setTint(0xffffff, 0x00ff00, 0x0000ff, 0xff0000);
-        // var shape =  this.add.image(400, 300, 'wagmiball').setVisible(true);
-        // var mask = shape.createBitmapMask();
-        this.ball = this.add.circle(400, 250, 10, generateHexColor(), 10)
+
+        this.ball = this.add.circle(400, 250, 10, color, 10)
 
         // this.ball.setMask(mask)
 
@@ -54,6 +69,8 @@ export default class Game extends Phaser.Scene {
         this.physics.add.existing(this.ball)
         this.ball.body.setCircle(10)
         this.ball.body.setBounce(1, 1)
+
+        this.ball.body.setMaxSpeed(400)
 
         this.ball.body.setCollideWorldBounds(true, 1, 1)
 
@@ -69,6 +86,8 @@ export default class Game extends Phaser.Scene {
         this.paddleRight = this.add.rectangle(750, 250, 20, 100, 0xffffff, 1)
         this.physics.add.existing(this.paddleRight, true) // true makes it static and not move back when ball collides
         this.physics.add.collider(this.paddleRight, this.ball, this.handdlePaddleBallCollision, undefined, this)
+
+        this.physics.world.on('worldbounds', this.handleBallWorldBoundsCollision, this)
         
         const scoreStyle = {
             fontSize: 48,
@@ -83,13 +102,62 @@ export default class Game extends Phaser.Scene {
 
         this.cursors = this.input.keyboard.createCursorKeys()
 
+
+        this.input.keyboard.on('keydown-P', () => {
+            console.log('P PRESSED');
+            // console.log('s[ace');
+            // alert('dimelo piccolito!')
+            this.pauseGame()
+            // this.scene.start(SceneKeys.Game)
+        } )
+
+        // listens to when game is resumed
+        this.events.on('resume', this.resumeGame, this)
+
     }   
 
-  
+    resumeGame() {
+        this.scene.resume('game')
 
+    }
+    pauseGame() {
+        console.log('hola wstoy pausing dejame ', this.paused);
+
+        this.paused = !this.paused
+
+        if (this.paused) {
+            console.log(this.scene);
+            console.log('PAUSE');
+            this.scene.pause()
+            this.scene.launch(SceneKeys.Pause);
+
+        } else {
+            // this.
+            console.log('RESUME');
+            // this.scene.resume(Game)
+        }
+     
+    }
+
+    handleBallWorldBoundsCollision(body, up, down, left, right) {
+        console.log('hola simon ');
+        this.sound.play(Audio.Paddle)
+    }
+
+  
+    //Plays sound when paddle is hit
     handdlePaddleBallCollision(paddle, ball) {
         // console.log(ball);
         this.sound.play(Audio.Paddle)
+
+        /** @type {Phaser.Physics.Arcade.Body} */
+        const body = this.ball.body
+        const vel = body.velocity
+
+        vel.x *= 1.05
+        vel.y *= 1.05
+
+        body.setVelocity(vel.x, vel.y)
     }
 
     update() {
@@ -171,7 +239,7 @@ export default class Game extends Phaser.Scene {
         }
 
 
-        const maxScore = 7
+        const maxScore = 2
 
 
 
@@ -193,6 +261,7 @@ export default class Game extends Phaser.Scene {
             // game over
             this.ball.active = false
             this.physics.world.remove(this.ball.body)
+
 
             this.scene.stop(SceneKeys.GameBackground)
 
@@ -232,7 +301,14 @@ export default class Game extends Phaser.Scene {
 
     resetBall() {
         this.ball.setPosition(400, 250)
-        const angle = Phaser.Math.Between(0, 360)
+
+        const rightAngle = Phaser.Math.Between(135, 225) 
+        const leftAngle = Phaser.Math.Between(0, 45) 
+
+        // elegant way of choosing between items randomly
+        const angle = [rightAngle,leftAngle][Math.round(Math.random())]  // Phaser.Math.Between(0, 360)
+
+
         const vec = this.physics.velocityFromAngle(angle, 300)
 
         this.ball.body.setVelocity(vec.x, vec.y)

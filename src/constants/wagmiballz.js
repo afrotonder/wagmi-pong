@@ -1,5 +1,7 @@
 import Moralis from 'moralis/dist/moralis.min.js';
 import { firebaseConfig } from '../../environment.prod';
+import Game from '../scenes/Game'
+
 var wagmiballz = []
 let wagmiball = '' 
 
@@ -11,67 +13,73 @@ const appId = firebaseConfig.romero
 //  // start moralis engine
 Moralis.start({ serverUrl, appId });
 
+async function getEthAssets(address) {
+
+    try {
+        // console.log(polygonNF?Ts);
+       const optionsETH = { chain: 'eth', address: address };
+       const ethNFTs = await Moralis.Web3API.account.getNFTs(optionsETH);
+    //    console.log('eth address ', ethNFTs.result);
+
+       return ethNFTs
+    } catch (error) {
+        
+    }
+      
+}
 async function getUserNFTs(address) {
 
     try {
-        console.log('address ', address);
         
-        // moralis server URL
-        
-
         const options = { chain: 'matic', address: address };
-        const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
+        const polygonNFTs = await Moralis.Web3API.account.getNFTs(options)
+        
 
-        // console.log(polygonNF?Ts);
+            let polyAssets = polygonNFTs.result
+            let ethAssets = await getEthAssets(address)
 
+            let allUserNFTs = polyAssets.concat(ethAssets.result)
 
-        for (let asset of polygonNFTs.result) {
-            let nft = JSON.parse(asset.metadata)
-            if (!!nft) {
-                // console.log(nft.name.toString() );
-                if (nft.name.includes('PixelMiibs')) {
-                    // console.log('WOWOWOWOWOWOWOWOWOWO');
-                    wagmiballz.push(nft)
+            for (let asset of allUserNFTs) {
+                let nft = JSON.parse(asset.metadata)
 
+                if (!!nft && !!nft.name && !!nft.description) {
+
+                    let nftName = !!nft.name === true ? nft.name  : ""
+                    let nftDesc = !!nft.description === true ? nft.description : ""
+                 
+                    if (nftName.includes('Wagmiballz') || nftDesc.includes('Wagmiballz')) {
+
+                        wagmiballz.push(nft)
+
+                    }
                 }
             }
-        }
 
+
+            
         if (wagmiballz.length) {    
             
             console.log('this user has wagmiballlz ', wagmiballz);
-
-            return wagmiballz
-
-            // document.getElementsByClassName('tvContainer')[0].style.display = 'none'
-            // document.getElementsByClassName('connectWallet')[0].style.display = 'none'
-            // document.querySelectorAll('canvas')[0].style.display = 'flex'
+            document.getElementsByClassName('tvContainer')[0].style.display = 'none'
+            document.getElementsByClassName('connectWallet')[0].style.display = 'none'
+            document.querySelectorAll('canvas')[0].style.display = 'flex'
+            // return wagmiballz
+            document.getElementById('done').click()
+            //  this.game.scene.start('titleScreen')
+            //         this.game.scene.start(SceneKeys.Preload)
+           
 
         } else {
-            alert('Plz go buy a wagmiball @ OpenSea!')
-
-            // TODO
-            // hide connect button
-            document.getElementById('connectButton').style.display = 'none'
-            // add new buttons in screen for collections and mint site
+            // alert('Plz go buy a wagmiball @ OpenSea!')
+            Swal.fire(
+                'The Internet?',
+                'That thing is still around?',
+                'question'
+              )
+            
         }
 
-
-        // game.load.image('wagmiball', wagmiballz[0].image);
-
-
-        // polygonNFTs.result.forEach(asset => {
-        //     let nft = JSON.parse(asset.metadata)
-        //     console.log(nft.name);
-
-      
-
-        // });
-
-        // const opts = { address: "0x2953399124f0cbb46d2cbacd8a89cf0599974963", token_id: "92986716105997878495280914514219232026124040552936354403148946709141996437505", chain: "matic" };
-        // const tokenIdMetadata = await Moralis.Web3API.token.getTokenIdMetadata(opts);
-
-        // console.log(tokenIdMetadata);
 
     } catch (error) {
         console.log(error);
@@ -80,50 +88,14 @@ async function getUserNFTs(address) {
 
 }
 
-// getUserNFTs()
 
-function connectMetamask() {
-    console.log('hpla');
-    Moralis.authenticate().then(function (user) {
-        console.log(user.get('ethAddress'))
-
-
-
-        try {
-            // console.log('EJE ', event.target.value.length);
-            // console.log(document.getElementById('walletID'))
-            // if (event.target.value.length === 42) {
-                wagmiballz.getUserNFTs(user.get('ethAddress')).then((result) => {
-                    console.log(result);
-                    // console.log('');
-                    document.getElementsByClassName('tvContainer')[0].style.display = 'none'
-                    document.getElementsByClassName('connectWallet')[0].style.display = 'none'
-                    document.querySelectorAll('canvas')[0].style.display = 'flex'
-        
-
-
-                // game.scene.start('titleScreen')
-
-                game.scene.start(SceneKeys.Preload)
-                }).catch((err) => {
-                    
-                });
-
-            // }
-        } catch (error) {
-            
-        }
-    })
-}
 
 export {
-    // wagmiball,
-    getUserNFTs
+    wagmiballz
 }
-console.log('esto tiene prob de scoping :W',wagmiballz);
 
 document.getElementById('connectMetamask').addEventListener('click', function(event) {
-    alert('zumba simba!')
+    document.getElementById('connectMetamask').innerText = "Connecting..."
     Moralis.authenticate().then(function (user) {
         console.log(user.get('ethAddress'))
         console.log(user);

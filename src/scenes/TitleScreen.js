@@ -16,8 +16,7 @@ export default class TitleScreen extends Phaser.Scene {
 
 
     create() {
-        this.sound.loop = true
-        // this.sound.play(Audio.Title)
+       
 
         const title = this.add.text(400, 200, 'Paddlez',
             {
@@ -42,6 +41,7 @@ export default class TitleScreen extends Phaser.Scene {
                 fontFamily: SceneKeys.Font
             }).setOrigin(0.5, 0.5)
 
+        
 
             this.input.keyboard.once('keydown-SPACE', () => {
                 console.log('s[ace');
