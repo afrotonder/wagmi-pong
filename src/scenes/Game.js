@@ -117,7 +117,7 @@ export default class Game extends Phaser.Scene {
     }   
 
     resumeGame() {
-        this.scene.resume('game')
+        this.scene.resume(Game)
 
     }
     pauseGame() {
@@ -228,18 +228,21 @@ export default class Game extends Phaser.Scene {
 
             // left side score, 
             this.resetBall()
-            this.incrementRightScore()
+            // this.incrementRightScore()
+            this.incrementScore('right')
 
         } else if (this.ball.x > rightBounds) {
             this.sound.play(Audio.Score)
 
             this.resetBall()
-            this.incrementLeftScore()
+            // this.incrementLeftScore()
+            this.incrementScore('left')
+
 
         }
 
 
-        const maxScore = 2
+        const maxScore = 7
 
 
 
@@ -257,6 +260,10 @@ export default class Game extends Phaser.Scene {
 
         if (this.gameState === GameState.Running)  {
             this.resetBall()
+
+            if (this.leftScore + this.rightScore > 2) {
+                this.setRandomObstable()
+            }
         } else {
             // game over
             this.ball.active = false
@@ -298,6 +305,18 @@ export default class Game extends Phaser.Scene {
         this.rightScoreLabel.text = this.rightScore
     }
 
+    incrementScore(direction) {
+
+        if (direction === 'left') {
+            this.leftScore += 1
+            this.leftScoreLabel.text = this.leftScore
+        } else {
+            this.rightScore += 1
+            this.rightScoreLabel.text = this.rightScore
+        }
+       
+    }
+
 
     resetBall() {
         this.ball.setPosition(400, 250)
@@ -312,6 +331,26 @@ export default class Game extends Phaser.Scene {
         const vec = this.physics.velocityFromAngle(angle, 300)
 
         this.ball.body.setVelocity(vec.x, vec.y)
+    }
+
+    setRandomObstable() {
+        console.log('switch between random obs stackles');
+
+        // set random number flag
+
+        // set switch statewment with functions
+
+        const x = Phaser.Math.Between(0, 500) 
+        const y = Phaser.Math.Between(0, 500) 
+        const height = Phaser.Math.Between(100, 200) //
+
+
+        
+        this.centerPaddle = this.add.rectangle(x, y, 20, height, 0xf43434, 1)
+        this.physics.add.existing(this.centerPaddle, true) // true makes it static and not move back when ball collides
+        this.physics.add.collider(this.centerPaddle, this.ball, this.handdlePaddleBallCollision, undefined, this)
+
+
     }
 }
 
