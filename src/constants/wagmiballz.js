@@ -96,12 +96,20 @@ export {
 
 document.getElementById('connectMetamask').addEventListener('click', function(event) {
     document.getElementById('connectMetamask').innerText = "Connecting..."
-    Moralis.authenticate().then(function (user) {
-        console.log(user.get('ethAddress'))
-        console.log(user);
-        const userAddress = user.get('ethAddress')
-        getUserNFTs(userAddress)
-    })
+
+        Moralis.authenticate().then(function (user) {
+            console.log(user.get('ethAddress'))
+            console.log(user);
+            const userAddress = user.get('ethAddress')
+            getUserNFTs(userAddress)
+        })
+        .catch(function (error) {
+            console.log(error);
+            alert('Sign wi')
+            document.getElementById('connectMetamask').innerText = "Connect Wallet"
+          });
+   
+  
 
 })
 

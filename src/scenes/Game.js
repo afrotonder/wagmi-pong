@@ -63,9 +63,7 @@ export default class Game extends Phaser.Scene {
         this.physics.add.existing(this.ball)
         this.ball.body.setCircle(10)
         this.ball.body.setBounce(1, 1)
-
         this.ball.body.setMaxSpeed(1000)
-
         this.ball.body.setCollideWorldBounds(true, 1, 1)
 
         this.time.delayedCall(1500, () => {
@@ -76,7 +74,7 @@ export default class Game extends Phaser.Scene {
         this.paddleLeft = this.add.rectangle(50, 250, 20, 100, 0xffffff, 1)
         this.physics.add.existing(this.paddleLeft, true) // true makes it static and not move back when ball collides
         this.physics.add.collider(this.paddleLeft, this.ball, this.handdlePaddleBallCollision, undefined, this)
-        
+       
         this.paddleRight = this.add.rectangle(750, 250, 20, 100, 0xffffff, 1)
         this.physics.add.existing(this.paddleRight, true) // true makes it static and not move back when ball collides
         this.physics.add.collider(this.paddleRight, this.ball, this.handdlePaddleBallCollision, undefined, this)
@@ -133,6 +131,10 @@ export default class Game extends Phaser.Scene {
             // this.scene.resume(Game)
         }
      
+    }
+
+    handlePaddleWorldCollision() {
+        console.log('hooo pero weeno ');
     }
 
     handleBallWorldBoundsCollision(body, up, down, left, right) {
@@ -282,12 +284,21 @@ export default class Game extends Phaser.Scene {
         const body = this.paddleLeft.body 
 
         if(this.cursors.up.isDown) {
-            this.paddleLeft.y += -10
-            body.updateFromGameObject()
+            
+            if(this.paddleLeft.y >= 40) {
+                this.paddleLeft.y += -10
+                body.updateFromGameObject()
+
+            }
 
         } else if (this.cursors.down.isDown) {
-            this.paddleLeft.y += 10
-            body.updateFromGameObject()
+            console.log(this.paddleLeft.y);
+
+            if(this.paddleLeft.y <= 460) {
+                this.paddleLeft.y += 10
+                body.updateFromGameObject()
+            }
+        
         } 
     }
 
@@ -338,7 +349,7 @@ export default class Game extends Phaser.Scene {
         switch(flag) {
             case 1:
               console.log('generate random wall');
-              this.genRandomWall()
+              this.genRandomWallz()
 
               break;
             case 2:
@@ -356,7 +367,7 @@ export default class Game extends Phaser.Scene {
 
     }
 
-    genRandomWall() {
+    genRandomWallz() {
         const x = Phaser.Math.Between(0, 500) 
         const y = Phaser.Math.Between(0, 500) 
         const height = Phaser.Math.Between(100, 200) //
@@ -370,7 +381,7 @@ export default class Game extends Phaser.Scene {
 
     genRandomBallz() {
         
-        const ballCount = Phaser.Math.Between(0, 10) 
+        const ballCount = Phaser.Math.Between(0, 6) 
 
         for (let i = 0; i < ballCount; i++) {
             let ball = this.add.circle(400, 250, 10, this.color, 10)

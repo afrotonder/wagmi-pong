@@ -37,7 +37,8 @@ export default class TitleScreen extends Phaser.Scene {
 
             let assets =  wagmiballz.wagmiballz.filter(ball => ball.traits.length > 0)
 
-
+            console.log('CHOOSING IN THE CHOOSER');
+            document.getElementById('chooser').style.display = 'block'
 
 
             // const subTitle = this.add.text(400, 300, 'Press Spacebar To Play',
