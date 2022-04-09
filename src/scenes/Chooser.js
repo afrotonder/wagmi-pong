@@ -6,6 +6,8 @@ import * as SceneKeys from '../constants/SceneKeys'
 
 import * as Audio from '../constants/Audio'
 
+import * as wagmiballz from '../constants/wagmiballz'
+
 
 export default class TitleScreen extends Phaser.Scene {
     preload() {
@@ -18,7 +20,7 @@ export default class TitleScreen extends Phaser.Scene {
     create() {
        
 
-        const title = this.add.text(400, 200, 'Paused',
+        const title = this.add.text(400, 200, 'Choose your ball:',
             {
                 fontSize: 50,
                 fontFamily: SceneKeys.Font
@@ -33,21 +35,23 @@ export default class TitleScreen extends Phaser.Scene {
             title.setFill(gradient);
 
 
+            let assets =  wagmiballz.wagmiballz.filter(ball => ball.traits.length > 0)
 
 
-            const subTitle = this.add.text(400, 300, 'Press Spacebar To Resume',
-            {
-                fontSize: 15,
-                fontFamily: SceneKeys.Font
-            }).setOrigin(0.5, 0.5)
+
+
+            // const subTitle = this.add.text(400, 300, 'Press Spacebar To Play',
+            // {
+            //     fontSize: 15,
+            //     fontFamily: SceneKeys.Font
+            // }).setOrigin(0.5, 0.5)
 
         
 
-            this.input.keyboard.once('keydown-SPACE', () => {
-                console.log('s[hello pausing');
-                this.scene.resume(SceneKeys.Game, this.testingFunc)
-                this.scene.stop(SceneKeys.Pause)
-            } )
+            // this.input.keyboard.once('keydown-SPACE', () => {
+            //     console.log('s[ace');
+                // this.scene.start(SceneKeys.Game, BALL)
+            // } )
     }
 
 }

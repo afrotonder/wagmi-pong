@@ -11,7 +11,7 @@ export default class Preload extends Phaser.Scene {
 
         this.load.audio(Audio.Score, 'assets/score.wav')
         // this.load.audio(Audio.Title, 'assets/title.wav')
-        this.load.audio(Audio.Title, 'assets/theme.wav')
+        this.load.audio(Audio.Title, 'assets/theme.wav', 0.8, true)
         this.load.audio(Audio.Paddle, 'assets/paddle.wav')
         this.load.audio(Audio.Bounds, 'assets/score.wav')
 

@@ -22,7 +22,7 @@ export default class GameOver extends Phaser.Scene {
             fontSize: 38
         }).setOrigin(0.5, 0.5)
 
-        this.add.text(400, 300, 'Play again?', {
+        this.add.text(400, 300, 'Press Space to Play Again', {
             fontFamily: SceneKeys.Font,
             fontSize: 22
         }).setOrigin(0.5, 0.5)

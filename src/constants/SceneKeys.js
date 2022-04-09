@@ -1,5 +1,6 @@
 const TitleScreen = 'titlescreen'
 const Game = 'game'
+const Chooser = 'chooser'
 const GameBackground = 'game-background'
 const GameOver = 'game-over'
 const Preload = 'preload'

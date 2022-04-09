@@ -60,12 +60,6 @@ export default class Game extends Phaser.Scene {
 
         this.ball = this.add.circle(400, 250, 10, this.color, 10)
 
-        // this.ball.setMask(mask)
-
-
-
-        // this.ball.createBitmapMask('wagj8') //add.image(100, 100, 'wagmiball'); // 
-        // this.ball.setTintFill('0x8455')// this.add.sprite(200, 360, 'wagmiball', 5); 
         this.physics.add.existing(this.ball)
         this.ball.body.setCircle(10)
         this.ball.body.setBounce(1, 1)
@@ -121,6 +115,7 @@ export default class Game extends Phaser.Scene {
         this.scene.resume(Game)
 
     }
+
     pauseGame() {
         console.log('hola wstoy pausing dejame ', this.paused);
 
@@ -145,7 +140,6 @@ export default class Game extends Phaser.Scene {
         this.sound.play(Audio.Paddle)
     }
 
-  
     //Plays sound when paddle is hit
     handdlePaddleBallCollision(paddle, ball) {
         // console.log(ball);

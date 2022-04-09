@@ -4,6 +4,7 @@ import TitleScreen from './scenes/TitleScreen'
 import Game from './scenes/Game'
 import GameBackground from './scenes/GameBackground'
 import GameOver from './scenes/GameOver'
+import Chooser from './scenes/Chooser'
 import Preload from './scenes/Preload'
 import Pause from './scenes/Pause'
 import * as SceneKeys from './constants/SceneKeys'
@@ -36,6 +37,7 @@ const config = {
     // load scenes
     game.scene.add(SceneKeys.TitleScreen, TitleScreen)
     game.scene.add(SceneKeys.Game, Game)
+    game.scene.add(SceneKeys.Chooser, Chooser)
     game.scene.add(SceneKeys.GameBackground, GameBackground)
     game.scene.add(SceneKeys.GameOver, GameOver)
     game.scene.add(SceneKeys.Preload, Preload)

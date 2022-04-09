@@ -6,6 +6,7 @@ import * as SceneKeys from '../constants/SceneKeys'
 
 import * as Audio from '../constants/Audio'
 
+import * as wagmiballz from '../constants/wagmiballz'
 
 export default class TitleScreen extends Phaser.Scene {
     preload() {
@@ -32,21 +33,51 @@ export default class TitleScreen extends Phaser.Scene {
         
             title.setFill(gradient);
 
-
-
-
-            const subTitle = this.add.text(400, 300, 'Press Spacebar To Play',
+            const subTitle = this.add.text(400, 250, 'A Web3 Experience',
             {
-                fontSize: 15,
+                fontSize: 10,
                 fontFamily: SceneKeys.Font
             }).setOrigin(0.5, 0.5)
 
+
+         
+            let assets =  wagmiballz.wagmiballz.filter(ball => ball.traits.length > 0)
+
+            if (assets.length >= 2) {
+
+                const chooseNFT = this.add.text(400, 350, 'Press Spacebar To Choose NFT',
+                {
+                    fontSize: 15,
+                    fontFamily: SceneKeys.Font
+                }).setOrigin(0.5, 0.5)
+
+
+                this.input.keyboard.once('keydown-SPACE', () => {
+                    console.log('Chooser');
+                    this.scene.start(SceneKeys.Chooser)
+                })
+                
+
+            } else {
+           
+
+                const startPlayint = this.add.text(400, 350, 'Press Spacebar To Play',
+                {
+                    fontSize: 15,
+                    fontFamily: SceneKeys.Font
+                }).setOrigin(0.5, 0.5)
+
+
+                this.input.keyboard.once('keydown-SPACE', () => {
+                    console.log('Starting Game');
+                    this.scene.start(SceneKeys.Game)
+                })
+    
+            }
+
         
 
-            this.input.keyboard.once('keydown-SPACE', () => {
-                console.log('s[ace');
-                this.scene.start(SceneKeys.Game)
-            } )
+       
     }
 
 }
