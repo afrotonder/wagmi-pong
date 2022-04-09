@@ -43,7 +43,7 @@ export default class Game extends Phaser.Scene {
         // console.log('user wagmiballz ', wagmiballz);
 
         let assets =  wagmiballz.wagmiballz.filter(ball => ball.traits.length > 0)
-        let color = assets[0].traits[1].value.replace('#', '0x')
+        this.color = assets[0].traits[1].value.replace('#', '0x')
 
         // console.log('color ', color);
         // TODO: add chooser
@@ -58,7 +58,7 @@ export default class Game extends Phaser.Scene {
 
         this.physics.world.setBounds(-100, 0, 1000, 500)
 
-        this.ball = this.add.circle(400, 250, 10, color, 10)
+        this.ball = this.add.circle(400, 250, 10, this.color, 10)
 
         // this.ball.setMask(mask)
 
@@ -232,14 +232,12 @@ export default class Game extends Phaser.Scene {
 
             // left side score, 
             this.resetBall()
-            // this.incrementRightScore()
             this.incrementScore('right')
 
         } else if (this.ball.x > rightBounds) {
             this.sound.play(Audio.Score)
 
             this.resetBall()
-            // this.incrementLeftScore()
             this.incrementScore('left')
 
 
@@ -299,15 +297,15 @@ export default class Game extends Phaser.Scene {
         } 
     }
 
-    incrementLeftScore() {
-        this.leftScore += 1
-        this.leftScoreLabel.text = this.leftScore
-    }
+    // incrementLeftScore() {
+    //     this.leftScore += 1
+    //     this.leftScoreLabel.text = this.leftScore
+    // }
 
-    incrementRightScore() {
-        this.rightScore += 1
-        this.rightScoreLabel.text = this.rightScore
-    }
+    // incrementRightScore() {
+    //     this.rightScore += 1
+    //     this.rightScoreLabel.text = this.rightScore
+    // }
 
     incrementScore(direction) {
 
@@ -341,9 +339,30 @@ export default class Game extends Phaser.Scene {
         console.log('switch between random obs stackles');
 
         // set random number flag
-
+        const flag = [1,2][Math.round(Math.random())] 
         // set switch statewment with functions
+        switch(flag) {
+            case 1:
+              console.log('generate random wall');
+              this.genRandomWall()
 
+              break;
+            case 2:
+                console.log('generate random ballz');
+              // code block
+              this.genRandomBallz()
+              break;
+            default:
+              // code block
+          }
+
+
+        
+
+
+    }
+
+    genRandomWall() {
         const x = Phaser.Math.Between(0, 500) 
         const y = Phaser.Math.Between(0, 500) 
         const height = Phaser.Math.Between(100, 200) //
@@ -353,9 +372,39 @@ export default class Game extends Phaser.Scene {
         this.centerPaddle = this.add.rectangle(x, y, 20, height, 0xf43434, 1)
         this.physics.add.existing(this.centerPaddle, true) // true makes it static and not move back when ball collides
         this.physics.add.collider(this.centerPaddle, this.ball, this.handdlePaddleBallCollision, undefined, this)
-
-
     }
+
+    genRandomBallz() {
+        
+        const ballCount = Phaser.Math.Between(0, 10) 
+
+        for (let i = 0; i < ballCount; i++) {
+            let ball = this.add.circle(400, 250, 10, this.color, 10)
+
+            this.physics.add.existing(ball)
+            ball.body.setCircle(10)
+            ball.body.setBounce(1, 1)
+
+            ball.body.setMaxSpeed(1000)
+
+            ball.body.setCollideWorldBounds(true, 1, 1)
+
+            ball.setPosition(400, 250)
+
+            const rightAngle = Phaser.Math.Between(135, 225) 
+            const leftAngle = Phaser.Math.Between(0, 45) 
+    
+            // elegant way of choosing between items randomly
+            const angle = [rightAngle,leftAngle][Math.round(Math.random())]  // Phaser.Math.Between(0, 360)
+    
+    
+            const vec = this.physics.velocityFromAngle(angle, 300)
+    
+            ball.body.setVelocity(vec.x, vec.y)
+        }
+    
+    }
+
 }
 
 // export default Game
