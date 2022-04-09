@@ -70,7 +70,7 @@ export default class Game extends Phaser.Scene {
         this.ball.body.setCircle(10)
         this.ball.body.setBounce(1, 1)
 
-        this.ball.body.setMaxSpeed(400)
+        this.ball.body.setMaxSpeed(1000)
 
         this.ball.body.setCollideWorldBounds(true, 1, 1)
 
@@ -117,6 +117,7 @@ export default class Game extends Phaser.Scene {
     }   
 
     resumeGame() {
+        this.paused = !this.paused
         this.scene.resume(Game)
 
     }
@@ -154,8 +155,11 @@ export default class Game extends Phaser.Scene {
         const body = this.ball.body
         const vel = body.velocity
 
-        vel.x *= 1.05
-        vel.y *= 1.05
+        vel.x *= 1.08
+        vel.y *= 1.08
+
+        console.log('x ',vel.x);
+        console.log('y ',vel.y);
 
         body.setVelocity(vel.x, vel.y)
     }

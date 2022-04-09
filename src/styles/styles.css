@@ -13,8 +13,8 @@ body {
   -webkit-animation: AnimationName 16s ease infinite;
   -moz-animation: AnimationName 16s ease infinite;
   animation: AnimationName 16s ease infinite;
-  width: 800px;
-  height: 500px;
+  width: 820px;
+  height: 520px;
 
 }
 
@@ -23,15 +23,20 @@ body {
 }
 
 .tv {
-  margin-top: -1%;
+  /* margin-top: -1%;
   height: 555px;
-  width: 888px;
+  width: 888px; */
+  margin-top: -4em;
+  height: 666px;
+  width: 1023px;
   position: absolute;
   z-index: 300 !important;
   background-image: url("../../public/assets/tv-frame.png") !important;
   background-size: 100% 100%;
-  padding-left: 10px;
-  margin-left: -10px;
+  /* padding-left: 10px; */
+  /* margin-left: -10px; */
+  margin-left: 55px;
+
   overflow: hidden;
   background-repeat: no-repeat;
 }
@@ -56,15 +61,14 @@ body {
 canvas {
   display: none;
 
-  margin-top: 10%;
+  /* margin-top: 10%; */
   z-index: -1000;
+
   position: absolute;
-  z-index: 10;
-
-  height: 478px;
-
-  margin: 1% 0% 0% -4%;
-  width: 657px;
+    z-index: 10;
+    height: 508px;
+    margin: 4px auto auto -67px;
+    width: 686px;
 }
  
  

@@ -46,7 +46,7 @@ export default class TitleScreen extends Phaser.Scene {
             this.input.keyboard.once('keydown-SPACE', () => {
                 console.log('s[hello pausing');
                 this.scene.resume(SceneKeys.Game, this.testingFunc)
-                this.scene.remove(SceneKeys.Pause)
+                this.scene.stop(SceneKeys.Pause)
             } )
     }
 
