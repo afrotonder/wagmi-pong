@@ -334,9 +334,9 @@ export default class Game extends Phaser.Scene {
         if (total > 1 && total <=5) {
              flag = Phaser.Math.Between(1, 2)  //  [1,2, ][Math.round(Math.random())] 
         } else if( total > 5 && total <= 8) {
-            flag = Phaser.Math.Between(1, 3)  //  [1,2, ][Math.round(Math.random())] 
+            flag = Phaser.Math.Between(2, 3)  //  [1,2, ][Math.round(Math.random())] 
         } else if (total > 8) {
-            flag = Phaser.Math.Between(2, 4)  //  [1,2, ][Math.round(Math.random())] 
+            flag = Phaser.Math.Between(3, 4)  //  [1,2, ][Math.round(Math.random())] 
 
         }
 
@@ -350,14 +350,16 @@ export default class Game extends Phaser.Scene {
               this.genRandomWallz()
               break;
             case 3: // generates an invisible wagmiwall & some lower level obstacle
-                this.getInvisibleWallz()
-                this.setRandomObstable(4) // feed static param <= 5 so it spawns a lower level obstacle
+                // this.genInvisibleWallz()
+                this.genRandomBallz()
+                this.setRandomObstable(6) // feed static param <= 5 so it spawns a lower level obstacle
             break;
             case 4:
-                // this.getInvisibleWallz()
+                // this.genInvisibleWallz()
                 this.shrinkPlayer()
-                this.getInvisibleWallz()
-                this.setRandomObstable(6) // feed static param <= 5 so it spawns a lower level obstacle
+                this.genRandomBallz()
+                this.genInvisibleWallz()
+                this.setRandomObstable(9) // feed static param <= 5 so it spawns a lower level obstacle
 
             break;
             default:
@@ -424,7 +426,7 @@ export default class Game extends Phaser.Scene {
     }
 
     // generates an invisible wagmiwall
-    getInvisibleWallz() {
+    genInvisibleWallz() {
 
         const x = Phaser.Math.Between(0, 500) 
         const y = Phaser.Math.Between(0, 500) 
