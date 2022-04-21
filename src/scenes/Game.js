@@ -14,12 +14,14 @@ const GameState = {
 
 export default class Game extends Phaser.Scene {
 
-    init() {
+    init(data) {
         this.gameState = GameState.Running 
         this.paddleRightVelocity = new Phaser.Math.Vector2(0,0)
         this.rightScore = 0
         this.leftScore = 0
         this.paused = false
+
+        this.selectedAsset = data.selectedBall
     }
 
     preload() {
@@ -40,17 +42,10 @@ export default class Game extends Phaser.Scene {
 
         this.sound.play(Audio.Title)
 
-        // console.log('user wagmiballz ', wagmiballz);
 
         let assets =  wagmiballz.wagmiballz.filter(ball => ball.traits.length > 0)
-        this.color = assets[0].traits[1].value.replace('#', '0x')
 
-        // console.log('color ', color);
-        // TODO: add chooser
-        
-        // assets.forEach(element => {
-        //     console.log(element);
-        // });
+        this.color = assets[this.selectedAsset].traits[1].value.replace('#', '0x')
 
         this.scene.run(SceneKeys.GameBackground)
 
@@ -106,10 +101,19 @@ export default class Game extends Phaser.Scene {
         // listens to when game is resumed
         this.events.on('resume', this.resumeGame, this)
 
+
+        this.input.keyboard.on('keydown-M', () => {
+            console.log('M PRESSED');
+            // console.log('s[ace');
+            // alert('dimelo piccolito!')
+            this.sound.stop()
+            // this.scene.start(SceneKeys.Game)
+        } )
+
     }   
 
     resumeGame() {
-        this.paused = !this.paused
+        this.paused = false
         this.scene.resume(Game)
 
     }
@@ -137,6 +141,7 @@ export default class Game extends Phaser.Scene {
         console.log('hooo pero weeno ');
     }
 
+    // FIXME: ESTO NO FFUNCIONA
     handleBallWorldBoundsCollision(body, up, down, left, right) {
         console.log('hola simon ');
         this.sound.play(Audio.Paddle)
@@ -153,9 +158,6 @@ export default class Game extends Phaser.Scene {
 
         vel.x *= 1.08
         vel.y *= 1.08
-
-        console.log('x ',vel.x);
-        console.log('y ',vel.y);
 
         body.setVelocity(vel.x, vel.y)
     }
@@ -187,7 +189,7 @@ export default class Game extends Phaser.Scene {
             return
         }
 
-        const aiSpeed = 3
+        const aiSpeed = 12
         // console.log(diff);
         if (diff < 0 ) {
 
@@ -245,12 +247,9 @@ export default class Game extends Phaser.Scene {
 
 
         if (this.leftScore >= maxScore) {
-            //player one
-            console.log('player one wns');
             // this.paused = true  
             this.gameState = GameState.PlayerWon
           } else if (this.rightScore >= maxScore) {
-            console.log('AI  won');
             // this.paused = true
             this.gameState = GameState.AIWon
 
@@ -259,7 +258,7 @@ export default class Game extends Phaser.Scene {
         if (this.gameState === GameState.Running)  {
             this.resetBall()
 
-            if (this.leftScore + this.rightScore > 2) {
+            if (this.leftScore + this.rightScore > 1) {
                 this.setRandomObstable()
             }
         } else {
@@ -292,7 +291,6 @@ export default class Game extends Phaser.Scene {
             }
 
         } else if (this.cursors.down.isDown) {
-            console.log(this.paddleLeft.y);
 
             if(this.paddleLeft.y <= 460) {
                 this.paddleLeft.y += 10
@@ -341,19 +339,16 @@ export default class Game extends Phaser.Scene {
     }
 
     setRandomObstable() {
-        console.log('switch between random obs stackles');
 
         // set random number flag
         const flag = [1,2][Math.round(Math.random())] 
         // set switch statewment with functions
         switch(flag) {
             case 1:
-              console.log('generate random wall');
               this.genRandomWallz()
 
               break;
             case 2:
-                console.log('generate random ballz');
               // code block
               this.genRandomBallz()
               break;
@@ -374,9 +369,16 @@ export default class Game extends Phaser.Scene {
 
 
         
-        this.centerPaddle = this.add.rectangle(x, y, 20, height, 0xf43434, 1)
-        this.physics.add.existing(this.centerPaddle, true) // true makes it static and not move back when ball collides
-        this.physics.add.collider(this.centerPaddle, this.ball, this.handdlePaddleBallCollision, undefined, this)
+        let centerPaddle = this.add.rectangle(x, y, 20, height, 0xf43434, 1)
+        this.physics.add.existing(centerPaddle, true) // true makes it static and not move back when ball collides
+        this.physics.add.collider(centerPaddle, this.ball, this.handdlePaddleBallCollision, undefined, this)
+
+        
+        let timeout = Phaser.Math.Between(20000, 3500)
+        setTimeout(function(){
+            centerPaddle.destroy();
+
+          },timeout);
     }
 
     genRandomBallz() {
@@ -402,10 +404,16 @@ export default class Game extends Phaser.Scene {
             // elegant way of choosing between items randomly
             const angle = [rightAngle,leftAngle][Math.round(Math.random())]  // Phaser.Math.Between(0, 360)
     
-    
+            const speedVec2 = Phaser.Math.Between(8000, 15000)
             const vec = this.physics.velocityFromAngle(angle, 300)
     
             ball.body.setVelocity(vec.x, vec.y)
+
+            let timeout = Phaser.Math.Between(8000, 25000)
+            setTimeout(function(){
+                ball.destroy();
+
+              },timeout);
         }
     
     }

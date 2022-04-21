@@ -105,7 +105,7 @@ document.getElementById('connectMetamask').addEventListener('click', function(ev
         })
         .catch(function (error) {
             console.log(error);
-            alert('Sign wi')
+            // alert('Sign wi')
             document.getElementById('connectMetamask').innerText = "Connect Wallet"
           });
    

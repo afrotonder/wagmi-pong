@@ -10,8 +10,10 @@ import Pause from './scenes/Pause'
 import * as SceneKeys from './constants/SceneKeys'
 import * as wagmiballz from './constants/wagmiballz'
 import { firebaseConfig } from '../environment.prod';
+import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
 
 import { initializeApp } from 'firebase/app';
+import { textSpanContainsPosition } from 'typescript'
 const app = initializeApp(firebaseConfig);
 
 // import Moralis from 'moralis/dist/moralis.min.js';
@@ -28,7 +30,18 @@ const config = {
         default: 'arcade',
         arcade: {
             gravity: {y: 0}
-        }
+        },
+        
+    },
+    dom: {
+        createContainer: true
+      },
+    plugins: {
+        scene: [{
+            key: 'rexUI',
+            plugin: UIPlugin,
+            mapping: 'rexUI'
+        }]
     }
 }
 
@@ -48,7 +61,7 @@ const config = {
 
 document.getElementById('done').addEventListener('click', function(event) {
     // alert('vammoajugal')
-     game.scene.start('titleScreen')
+     game.scene.start('titleScreen', {config: config})
     game.scene.start(SceneKeys.Preload)
 })
 
@@ -82,3 +95,6 @@ document.getElementById('done').addEventListener('click', function(event) {
 
 
 
+function test() {
+    alert('cho ch')
+}
