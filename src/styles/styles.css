@@ -3,7 +3,38 @@ body {
   justify-content: center;
 }
 
-  
+.footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: -10;
+
+}
+
+.instructions {
+  bottom: 125px;
+  /* position: absolute; */
+  z-index: -10;
+  display: flex;
+}
+
+.gamepad {
+  margin: 0 5px 0 15px;
+}
+
+.connecting {
+  display: none;
+
+  text-align: center;
+  margin: auto;
+  font-size: 29px;
+  color: black;
+  /* font-weight: bold; */
+}
+
 .openSea {
   display: none;
 }
@@ -15,7 +46,6 @@ body {
   animation: AnimationName 16s ease infinite;
   width: 820px;
   height: 520px;
-
 }
 
 .wagmiPong {
@@ -65,13 +95,8 @@ canvas {
   z-index: -1000;
 
   position: absolute;
-    z-index: 10;
-    height: 508px;
-    margin: 4px auto auto -67px;
-    width: 686px;
+  z-index: 10;
+  height: 508px;
+  margin: 4px auto auto -67px;
+  width: 686px;
 }
- 
- 
-
-
-

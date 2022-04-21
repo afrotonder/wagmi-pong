@@ -14,7 +14,7 @@
     <div class="tv">
       <div class="connectWallet" style="display: flex; flex-direction: column;">
         <button class="connectButton" id="connectMetamask">Connect Wallet</button>
-
+        <p class="connecting">Connecting...</p>
         <button class="openSea" style="width: 20%; margin-left: auto; margin-right: auto;">
           <a href="https://opensea.com/wagmiballz">Buy on OpenSea </a>
         </button>
@@ -33,22 +33,23 @@
     <div style="display: none; visibility: hidden;" id="done"></div>
     <!-- </div> -->
 
-    <div class="instructions" style="bottom: 125px; position: absolute; z-index: -10;">
-      <p>P = Pause</p>
-      <p>M = Mute/Unmute</p>
-      <!-- <p> = Pause</p> -->
-    </div>
+    <!-- <div class="instructions">
+      <p class="gamepad">P = Pause</p>
+      <p class="gamepad">M = Mute/Unmute</p>
+      <p class="gamepad">↑ = Up Paddle</p>
+      <p class="gamepad">↓ = Down Paddle</p>
+      
+    </div> -->
 
-    <footer
-      style="
-        position: absolute;
-        bottom: 0;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        z-index: -10;
-      "
-    >
+    <footer class="footer">
+    
+    <div class="instructions">
+      <!-- <p class="gamepad">P = Pause</p> -->
+      <!-- <p class="gamepad">M = Mute/Unmute</p> -->
+      <p class="gamepad">↑ = Up Paddle</p>
+      <p class="gamepad">↓ = Down Paddle</p>
+      
+    </div>
       <p id="year" style="text-decoration: none;"></p>
     </footer>
 

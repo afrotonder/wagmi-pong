@@ -95,7 +95,11 @@ export {
 }
 
 document.getElementById('connectMetamask').addEventListener('click', function(event) {
-    document.getElementById('connectMetamask').innerText = "Connecting..."
+    event.preventDefault()
+
+    // document.getElementById('connectMetamask').innerText = "Connecting..."
+    document.getElementById('connectMetamask').style.display = "none"
+    document.getElementsByClassName('connecting')[0].style.display = 'flex'
 
         Moralis.authenticate().then(function (user) {
             console.log(user.get('ethAddress'))
@@ -106,7 +110,10 @@ document.getElementById('connectMetamask').addEventListener('click', function(ev
         .catch(function (error) {
             console.log(error);
             // alert('Sign wi')
-            document.getElementById('connectMetamask').innerText = "Connect Wallet"
+            document.getElementById('connectMetamask').style.display = "block"
+            document.getElementsByClassName('connecting')[0].style.display = 'none'
+
+
           });
    
   

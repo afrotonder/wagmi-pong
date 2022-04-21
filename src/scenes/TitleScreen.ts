@@ -124,7 +124,7 @@ export default class TitleScreen extends Phaser.Scene {
                 })
                     .setOrigin(0.5)
 
-                await timer(500);
+                await timer(300);
 
                 tempCircle.destroy();
                 tempAssetName.destroy();
