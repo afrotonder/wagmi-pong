@@ -273,7 +273,7 @@ export default class Game extends Phaser.Scene {
         const body = this.paddleLeft.body 
 
         if(this.cursors.up.isDown  ){
-            
+                console.log('uppppppppppp');
             if(this.paddleLeft.y >= 40) {
                 this.paddleLeft.y += -10
                 body.updateFromGameObject()
@@ -281,13 +281,38 @@ export default class Game extends Phaser.Scene {
             }
 
         } else if (this.cursors.down.isDown) {
-
+            console.log('down');
             if(this.paddleLeft.y <= 460) {
                 this.paddleLeft.y += 10
                 body.updateFromGameObject()
             }
         
-        } 
+        } else if ( this.cursors.right.isDown) {
+            console.log('tilt paddle -10 deg');
+            console.log(this.paddleLeft.angle); 
+            this.paddleLeft.angle = -10
+            body.updateFromGameObject()
+
+
+        } else if (this.cursors.right.isUp) {
+            
+            this.paddleLeft.angle = 0
+            body.updateFromGameObject()
+        } else if ( this.cursors.left.isDown) {
+            console.log('tilt paddle 10 deg');
+            console.log(this.paddleLeft.angle); 
+            this.paddleLeft.angle = 10
+            body.updateFromGameObject()
+
+
+        } else if (this.cursors.left.isUp) {
+            
+            this.paddleLeft.angle = 0
+            body.updateFromGameObject()
+        }
+        
+        // TODO: add else if for tilting paddle
+
     }
 
     // increments left/right score depending on param
@@ -357,7 +382,7 @@ export default class Game extends Phaser.Scene {
             case 4:
                 // this.genInvisibleWallz()
                 this.shrinkPlayer()
-                this.genRandomBallz()
+                // this.genRandomBallz()
                 this.genInvisibleWallz()
                 this.setRandomObstable(9) // feed static param <= 5 so it spawns a lower level obstacle
 
@@ -446,7 +471,31 @@ export default class Game extends Phaser.Scene {
           },timeout);
     }
 
-    shrinkPlayer() {
-        console.log('can i call player ', this.ball);
+    async shrinkPlayer() {
+
+        const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+        let ogHeight = this.paddleRight.displayHeight 
+
+        if (this.paddleLeft.displayHeight >= ogHeight) {
+            console.log(object);
+
+            for (let j = 0; j < 3; j++) {
+                for(let i = 0; i < 20; i++) {
+                    this.paddleLeft.displayHeight -= i
+                    await timer(100);
+                }
+
+                           
+            await timer(300);
+
+            this.paddleLeft.displayHeight = ogHeight
+            }
+
+    
+        } 
+       
+       
+
+
     }
 }
