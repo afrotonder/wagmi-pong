@@ -1,24 +1,21 @@
-import Phaser from 'phaser'
-import WebFontFile from './WebFontFile'
-import * as SceneKeys from '../constants/SceneKeys'
-import * as Colors from '../constants/Colors'
-import * as Audio from '../constants/Audio'
+import Phaser from "phaser";
+import WebFontFile from "./WebFontFile";
+import * as SceneKeys from "../constants/SceneKeys";
+import * as Colors from "../constants/Colors";
+import * as Audio from "../constants/Audio";
 export default class Preload extends Phaser.Scene {
-    preload() {
+  preload() {
+    const fonts = new WebFontFile(this.load, "Press Start 2P");
+    this.load.addFile(fonts);
 
-        const fonts = new WebFontFile(this.load, 'Press Start 2P')
-        this.load.addFile(fonts)
+    this.load.audio(Audio.Score, "assets/score.wav");
+    // this.load.audio(Audio.Title, 'assets/title.wav')
+    this.load.audio(Audio.Title, "assets/theme.mp3", 0.8, true);
+    this.load.audio(Audio.Paddle, "assets/paddle.wav");
+    this.load.audio(Audio.Bounds, "assets/score.wav");
+  }
 
-        this.load.audio(Audio.Score, 'assets/score.wav')
-        // this.load.audio(Audio.Title, 'assets/title.wav')
-        this.load.audio(Audio.Title, 'assets/theme.mp3', 0.8, true)
-        this.load.audio(Audio.Paddle, 'assets/paddle.wav')
-        this.load.audio(Audio.Bounds, 'assets/score.wav')
-
-
-    }
-
-    create() {
-        this.scene.start(SceneKeys.TitleScreen)
-    }
-} 
+  create() {
+    this.scene.start(SceneKeys.TitleScreen);
+  }
+}

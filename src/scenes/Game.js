@@ -30,7 +30,6 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
-
     // let keyA;
     // let keyS;
     // let keyD;
@@ -39,7 +38,6 @@ export default class Game extends Phaser.Scene {
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-
 
     this.sound.loop = true;
     // this.sound.once('loop', function(music, loop){});
@@ -146,7 +144,6 @@ export default class Game extends Phaser.Scene {
   // Makes sound when game sprite touches world bounds
   // FIXME: ESTO NO FFUNCIONA
   handleBallWorldBoundsCollision(body, up, down, left, right) {
-    console.log("ballz touching world bounds");
     this.sound.play(Audio.Paddle);
   }
 
@@ -190,7 +187,7 @@ export default class Game extends Phaser.Scene {
     }
 
     const aiSpeed = 4; // 8 // 10 12 // 10, 12 feels good but is too OP
-    // console.log(diff);
+
     if (diff < 0) {
       //  ball above paddle
       this.paddleRightVelocity.y = -aiSpeed;
@@ -297,7 +294,6 @@ export default class Game extends Phaser.Scene {
       this.paddleLeft.angle = 0;
       body.updateFromGameObject();
     }
-
   }
 
   // increments left/right score depending on param
@@ -336,7 +332,6 @@ export default class Game extends Phaser.Scene {
     // set random number flag
     let flag = 0; //  Phaser.Math.Between(1, 2)  //  [1,2, ][Math.round(Math.random())]
 
-    console.log("total ", total);
     if (total > 1 && total <= 5) {
       flag = Phaser.Math.Between(1, 2); //  [1,2, ][Math.round(Math.random())]
     } else if (total > 5 && total <= 8) {
@@ -456,7 +451,6 @@ export default class Game extends Phaser.Scene {
     let ogHeight = this.paddleRight.displayHeight;
 
     if (this.paddleLeft.displayHeight >= ogHeight) {
-
       for (let j = 0; j < 3; j++) {
         for (let i = 0; i < 20; i++) {
           this.paddleLeft.displayHeight -= i;

@@ -16,14 +16,7 @@ export default class TitleScreen extends Phaser.Scene {
 
     init(data) {
 
-
-        console.log(
-
-            'YEAH GOT SOME DATA FROM OTHER', data.config
-        );
         this.cursors = this.input.keyboard.createCursorKeys()
-
-
     }
 
     preload() {
@@ -66,13 +59,12 @@ export default class TitleScreen extends Phaser.Scene {
 
         let assets = wagmiballz.wagmiballz.filter(ball => ball.traits.length > 0)
 
-        console.log('assets count ', assets.length);
 
         const randomSelectText = this.add.text(400, 420, 'Randomly selecting one of your WAGMIBALLZ.',
-        {
-            fontSize: '12px',
-            fontFamily: SceneKeys.Font
-        }).setOrigin(0.5, 0.5)
+            {
+                fontSize: '12px',
+                fontFamily: SceneKeys.Font
+            }).setOrigin(0.5, 0.5)
         await timer(2000);
 
 
@@ -137,25 +129,22 @@ export default class TitleScreen extends Phaser.Scene {
         randomSelectText.destroy()
 
         // select random int between 0 and length of assets - 1 to send to game scene
-        const selectedBall = Math.round(Phaser.Math.Between(0, assets.length-1)) // Phaser.Math.Between(0, 360)
+        const selectedBall = Math.round(Phaser.Math.Between(0, assets.length - 1)) // Phaser.Math.Between(0, 360)
 
         let tempColor = assets[selectedBall].traits[1].value.replace('#', '0x')
 
         const tempCircle = this.add.circle(assetX, assetY, 10, tempColor, 10)
-        .setDisplaySize(20, 20)
+            .setDisplaySize(20, 20)
 
 
 
-    // this.add.text(playButton.x, playButton.y, element.name, {
-    const tempAssetName = this.add.text(assetContainerX, assetContainerY, assets[selectedBall].name, {
-        fontSize: '10px',
-        color: '#ffffff',
-        fontFamily: SceneKeys.Font
-    })
-        .setOrigin(0.5)
-
-
-        console.log('read to play with ', selectedBall);
+        // this.add.text(playButton.x, playButton.y, element.name, {
+        const tempAssetName = this.add.text(assetContainerX, assetContainerY, assets[selectedBall].name, {
+            fontSize: '10px',
+            color: '#ffffff',
+            fontFamily: SceneKeys.Font
+        })
+            .setOrigin(0.5)
 
 
         // ready player one
@@ -168,34 +157,11 @@ export default class TitleScreen extends Phaser.Scene {
 
         // press space to start playing   
         this.input.keyboard.once('keydown-SPACE', () => {
-            console.log('Starting this.game');
-            this.scene.start(SceneKeys.Game, {'selectedBall': selectedBall})
+            this.scene.start(SceneKeys.Game, { 'selectedBall': selectedBall })
         })
 
-
-
     }
 
+    update() { }
 
-    update() {
-        // const upJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.up!)
-        // const downJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.down!)
-        // const spaceJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.space!)
-
-        // if (upJustPressed) {
-        //     console.log('uuuuuuuuuuuuuuuuuuuuppppppppppppppppppppppp');
-        // }
-        // else if (downJustPressed) {
-        //     console.log('dowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwnnnnnnnn');
-        // }
-        // else if (spaceJustPressed) {
-        //     console.log('sppppppppppppppppppaceeeeeeeeeeeeeeeeeeeeeeeeeeeee');
-        // }
-    }
-
-}
-
-
-function tesin() {
-    alert('KHE')
 }
