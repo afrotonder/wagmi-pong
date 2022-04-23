@@ -2,9 +2,10 @@
   <head>
     <link rel="shortcut icon" type="image/jpg" href="./favicon.ico" />
     <link rel="stylesheet" href="./styles/styles.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <title>Paddlez - A Pseudo-Random Web3 Experience</title>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <meta property="description" content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain." />
   <meta name="keywords" content="nft,nfts,web3,art,public domain">
@@ -20,6 +21,45 @@
   </head>
 
   <body class="wagmiPong">
+
+
+    <section class="mobile">
+      <h1>Paddlez</h1>
+      <p class="subtitle">A Pseudo-Random Web3 Experience</p>
+      <div class="paddlezDesc">
+        <article>
+          <p>Paddlez is an old school digital tennis game  exclusively available for WAGMIBALLZ Holders. </p>
+          <!-- </br></br> -->
+          <div class="ballContainer">
+            <img class="wagmiballz" src="../public/assets/WAGMIBALLZ.gif" alt="WAGMIBALLZgif">
+          </div>
+          <!-- </br></br> -->
+  
+          <p>
+            WAGMIBALLZ are a collection of programatically/randomly 
+            generated NFTs in the Ethereum blockchain, 
+            hosted on IPFS, minted for free, and published in the Public Domain.
+          </p>
+
+          <div class="buttons">
+            <button>
+                <a target="_blank" href="https://opensea.io/collection/wagmiballz"></a>
+              Buy WAGMIBALLZ @OpenSea
+            </button>
+          </div>
+
+        </article>
+        
+      </div>
+
+     
+    </section>
+
+
+
+
+
+
     <div class="tvContainer"></div>
 
     <div class="tv">
@@ -33,27 +73,20 @@
       </div>
     </div>
 
-    <div id="chooser" style="display: none; width: 725px; margin-left: -120px; 
-    grid-gap: 41px;
-    grid-template-columns: repeat(6, 100px);
-    grid-template-rows: 100px 100px 100px;
-    height: 500px;
-    background-color: black;
-    z-index: 100;"></div>
-
+    <!-- bucket element that emulates a click to update scene, not change to a diff one -->
     <div style="display: none; visibility: hidden;" id="done"></div>
 
     <footer class="footer">
     
-    <div class="instructions">
-      <!-- <p class="gamepad">P = Pause</p> -->
-      <!-- <p class="gamepad">M = Mute/Unmute</p> -->
-      <p class="gamepad">↑ = Up Paddle</p>
-      <p class="gamepad">↓ = Down Paddle</p>
-      <p class="gamepad">→ = Bottom Tilt</p>
-      <p class="gamepad">← = Top Tilt</p>
+      <div class="instructions">
+        <!-- <p class="gamepad">P = Pause</p> -->
+        <!-- <p class="gamepad">M = Mute/Unmute</p> -->
+        <p class="gamepad">↑ = Up Paddle</p>
+        <p class="gamepad">↓ = Down Paddle</p>
+        <p class="gamepad">→ = Bottom Tilt</p>
+        <p class="gamepad">← = Top Tilt</p>
 
-    </div>
+      </div>
       <p id="year" style="text-decoration: none;"></p>
     </footer>
 

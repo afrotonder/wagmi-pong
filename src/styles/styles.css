@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("../../public/assets/PressStart2P-Regular.ttf");
+  }
+  
+   
+:root {
+    font-family: 'Press Start 2P';
+
+}
+
+.mobile {
+  display: none;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -10,8 +25,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  z-index: -10;
-
+  /* z-index: -10; */
+font-size: 10px;
 }
 
 .instructions {
@@ -19,10 +34,12 @@ body {
   /* position: absolute; */
   z-index: -10;
   display: flex;
+  margin-bottom: 20px;
 }
 
 .gamepad {
-  margin: 0 5px 0 15px;
+  margin: 0 5px 0 20px;
+  font-size: 15px;
 }
 
 .connecting {
@@ -30,7 +47,7 @@ body {
 
   text-align: center;
   margin: auto;
-  font-size: 29px;
+  font-size: 22px;
   color: black;
   /* font-weight: bold; */
 }
@@ -79,6 +96,8 @@ body {
   border-radius: 10px;
   color: white;
   background-color: #252424;
+  font-family: 'Press Start 2P';
+  font-size: 10px;
 }
 
 .connectWallet {
@@ -99,4 +118,110 @@ canvas {
   height: 508px;
   margin: 4px auto auto -67px;
   width: 686px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  /* body {
+    background-color: lightblue;
+  } */
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .ballContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+
+  .wagmiballz {
+    width: 55%;
+    /* margin: auto; */
+  }
+
+  .mobile {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .paddlezDesc {
+    margin-top: 25px;;
+    font-size: 12px;
+
+    word-spacing: inherit;
+    margin-left: auto;
+    text-align: left;
+    width: 95%;
+    margin-right: auto;
+    line-height: 1.5;
+    /* opacity: 0.5; */
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 6px;
+  }
+
+  .subtitle {
+    margin-top: -15px;
+    font-size: 10px;
+  }
+
+  canvas {
+    display: none;
+  }
+
+  .tv {
+    display: none;
+  }
+
+  .tvContainer {
+    display: none;
+  }
+
+  body {
+    background: #abbaab;  /* fallback for old browsers */
+    background-repeat: no-repeat ;
+    background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+   }
+
+  .instructions {
+    display: none;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .buttons button {
+    font-family: 'Press Start 2P';
+    height: 42px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #2081e2;
+    font-size: 11px;
+  }
+} 
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 7%}
+    50%{background-position:100% 94%}
+    100%{background-position:0% 7%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 7%}
+    50%{background-position:100% 94%}
+    100%{background-position:0% 7%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 7%}
+    50%{background-position:100% 94%}
+    100%{background-position:0% 7%}
 }

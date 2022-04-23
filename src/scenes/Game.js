@@ -25,10 +25,6 @@ export default class Game extends Phaser.Scene {
 
   preload() {}
 
-  testingFunc() {
-    alert("DIMELOOOOo");
-  }
-
   create() {
     // let keyA;
     // let keyS;

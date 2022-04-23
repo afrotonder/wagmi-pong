@@ -15,12 +15,13 @@ export default class GameOver extends Phaser.Scene {
     if (data.leftScore > data.rightScore) {
       // player won
       titleText = "You win!";
-      titleColor = "#ffffff";
+      titleColor = "#fff00";
     }
     let title = this.add
       .text(400, 150, titleText, {
         fontFamily: SceneKeys.Font,
         fontSize: 38,
+        color: titleColor
       })
       .setOrigin(0.5, 0.5);
 

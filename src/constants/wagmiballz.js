@@ -55,7 +55,10 @@ async function getUserNFTs(address) {
       //         this.game.scene.start(SceneKeys.Preload)
     } else {
       // alert('Plz go buy a wagmiball @ OpenSea!')
-      Swal.fire("The Internet?", "That thing is still around?", "question");
+      document.getElementsByClassName('openSea')[0].style.display = 'flex'
+      // Swal.fire("The Internet?", "That thing is still around?", "question");
+      document.getElementsByClassName("connecting")[0].innerHTML = "You dont have any WAGMIBALLZ! Get your's at OpenSea!";
+
     }
   } catch (error) {
     console.log(error);
@@ -72,6 +75,8 @@ document
     // document.getElementById('connectMetamask').innerText = "Connecting..."
     document.getElementById("connectMetamask").style.display = "none";
     document.getElementsByClassName("connecting")[0].style.display = "flex";
+    document.getElementsByClassName("connecting")[0].style.innerHTML = "Connecting...";
+
 
     Moralis.authenticate()
       .then(function (user) {
