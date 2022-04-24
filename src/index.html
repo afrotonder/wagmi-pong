@@ -19,10 +19,14 @@
   <meta property="og:site_name" content="Paddlez - A Pseudo-Random Web3 Experience" />
 
   </head>
-  <p class="info">
-  ❓
 
-  </p>
+  <div id="infoToggle" class="info" onmouseover="renderModal()" >
+    <p  style="margin: auto;" >
+      ❓
+    
+      </p>
+  </div>
+ 
 
   <body class="wagmiPong">
 
@@ -66,15 +70,44 @@
       <div class="connectWallet" style="display: flex; flex-direction: column;">
         <button class="connectButton" id="connectMetamask">Connect Wallet</button>
         <p class="connecting">Connecting...</p>
+        <p class="noWagmiballz">You dont have any WAGMIBALLZ! Get your's at OpenSea!</p>
+          <a target="_blank" href="https://opensea.io/collection/wagmiballz">
         <button class="openSea">
-          <a href="https://opensea.com/wagmiballz">Mint on OpenSea </a>
+
+  <p> Buy WAGMIBALLZ @OpenSea </p>
         </button>
+          </a>
+        
       </div>
     </div>
 
     <!-- bucket element that emulates a click to update scene, not change to a diff one -->
     <div style="display: none; visibility: hidden;" id="done"></div>
+    <div class="infoModal">
+      <p>Obstacles:</p>
 
+      <ul>
+        <li>Wagmiwallz</li>
+        <li>Fake Wagmiballz</li>
+        <li>Invisible wagmiwallz</li>
+        <li>Spawn random Lvl 1-2 obstacles</li>
+        <li>Shrink</li>
+
+
+      </ul>
+
+      <p>Concepts:</p>
+
+      <ul>
+        <li>Intercontinental Ballistic Missile (ICBM)</li>
+
+        <li>Clustering</li>
+
+        <li>Frenzy Mode:</li>
+        
+      </ul>
+
+    </div>
     <footer class="footer">
       <div class="instructions">
         <p class="gamepad">↑ = Up Paddle</p>
@@ -94,7 +127,28 @@
         .getFullYear()
         .toString();
 
-        // window.connectWallet = thisgetUserNFTs
+
+        document.getElementById('infoToggle').addEventListener("mouseover", function() {
+          console.log('mouse overt');
+          renderModal(true)
+        });
+
+        document.getElementById('infoToggle').addEventListener("mouseout", function() {
+          console.log('mouseout');
+          renderModal(false)
+        }
+          );
+  
+
+      function renderModal(userHover) {
+
+        if (userHover) {
+          document.getElementsByClassName('infoModal')[0].style.display = 'block'
+        } else {
+          document.getElementsByClassName('infoModal')[0].style.display = 'none'
+        }
+      }
+
     </script>
   </body>
 </html>

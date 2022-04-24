@@ -48,6 +48,7 @@ async function getUserNFTs(address) {
       document.getElementsByClassName("tvContainer")[0].style.display = "none";
       document.getElementsByClassName("connectWallet")[0].style.display =
         "none";
+
       document.querySelectorAll("canvas")[0].style.display = "flex";
       // return wagmiballz
       document.getElementById("done").click();
@@ -55,9 +56,11 @@ async function getUserNFTs(address) {
       //         this.game.scene.start(SceneKeys.Preload)
     } else {
       // alert('Plz go buy a wagmiball @ OpenSea!')
+      document.getElementsByClassName('openSea')[0].style.visibility = 'visible'
       document.getElementsByClassName('openSea')[0].style.display = 'flex'
       // Swal.fire("The Internet?", "That thing is still around?", "question");
-      document.getElementsByClassName("connecting")[0].innerHTML = "You dont have any WAGMIBALLZ! Get your's at OpenSea!";
+      document.getElementsByClassName('connecting')[0].style.display = 'none'
+      document.getElementsByClassName("noWagmiballz")[0].style.display = 'flex'
 
     }
   } catch (error) {
