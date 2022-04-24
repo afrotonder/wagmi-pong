@@ -37,8 +37,11 @@ export default class Game extends Phaser.Scene {
 
     this.sound.loop = true;
     // this.sound.once('loop', function(music, loop){});
-
-    this.sound.play(Audio.Title);
+    let audioConfig = {
+      loop: true
+    }
+    
+    this.sound.play(Audio.Title, audioConfig);
 
     let assets = wagmiballz.wagmiballz.filter((ball) => ball.traits.length > 0);
 
