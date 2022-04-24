@@ -10,7 +10,6 @@ import Pause from "./scenes/Pause";
 import * as SceneKeys from "./constants/SceneKeys";
 import * as wagmiballz from "./constants/wagmiballz";
 import { firebaseConfig } from "../environment.prod";
-import UIPlugin from "phaser3-rex-plugins/templates/ui/ui-plugin.js";
 
 import { initializeApp } from "firebase/app";
 import { textSpanContainsPosition } from "typescript";
@@ -34,16 +33,7 @@ const config = {
   },
   dom: {
     createContainer: true,
-  },
-  plugins: {
-    scene: [
-      {
-        key: "rexUI",
-        plugin: UIPlugin,
-        mapping: "rexUI",
-      },
-    ],
-  },
+  }
 };
 
 // start engine
