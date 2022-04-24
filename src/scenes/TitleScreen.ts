@@ -68,25 +68,7 @@ export default class TitleScreen extends Phaser.Scene {
         await timer(2000);
 
 
-        // if (assets.length === 1) {
-        //     let userBallzCount = ``
-        //     let youHave = this.add.text(440, 260, userBallzCount,
-        //     {
-        //         fontSize: '12px',
-        //         fontFamily: SceneKeys.Font
-        //     }).setOrigin(0.5, 0.5)
-        // } else {
-        //     let userBallzCount = `Selecting one of your ${assets.length} WAGMIBALLZ.`
-        //     let youHave = this.add.text(440, 260, userBallzCount,
-        //     {
-        //         fontSize: '12px',
-        //         fontFamily: SceneKeys.Font
-        //     }).setOrigin(0.5, 0.5)
-        // }
-
-
-
-
+      
 
         const { width, height } = this.scale
         let assetContainerY = 350
@@ -95,70 +77,98 @@ export default class TitleScreen extends Phaser.Scene {
         let assetX = 400
 
 
-
-
-        for (let i = 0; i < 6; i++) {
-            // for each asset, create selectable rectangle
-            for (let element of assets) {
-
-                // get asset color from metadata
-                let color = element.traits[1].value.replace('#', '0x')
-
-
-                // set asset placeholder
-                const tempCircle = this.add.circle(assetX, assetY, 10, color, 10)
+            if(assets.length > 1) {
+                for (let i = 0; i < 6; i++) {
+                    // for each asset, create selectable rectangle
+                    for (let element of assets) {
+        
+                        // get asset color from metadata
+                        let color = element.traits[1].value.replace('#', '0x')
+        
+        
+                        // set asset placeholder
+                        const tempCircle = this.add.circle(assetX, assetY, 10, color, 10)
+                            .setDisplaySize(20, 20)
+        
+                        const tempAssetName = this.add.text(assetContainerX, assetContainerY, element.name, {
+                            fontSize: '10px',
+                            color: '#ffffff',
+                            fontFamily: SceneKeys.Font
+                        })
+                            .setOrigin(0.5)
+        
+                        await timer(300);
+        
+                        tempCircle.destroy();
+                        tempAssetName.destroy();
+        
+        
+                    };
+                }
+        
+                // remove Randomly selecting WAGMIBALL messge
+                randomSelectText.destroy()
+        
+                // select random int between 0 and length of assets - 1 to send to game scene
+                const selectedBall = Math.round(Phaser.Math.Between(0, assets.length - 1)) // Phaser.Math.Between(0, 360)
+        
+                let tempColor = assets[selectedBall].traits[1].value.replace('#', '0x')
+        
+                const tempCircle = this.add.circle(assetX, assetY, 10, tempColor, 10)
                     .setDisplaySize(20, 20)
-
-                const tempAssetName = this.add.text(assetContainerX, assetContainerY, element.name, {
+        
+        
+        
+                // this.add.text(playButton.x, playButton.y, element.name, {
+                const tempAssetName = this.add.text(assetContainerX, assetContainerY, assets[selectedBall].name, {
                     fontSize: '10px',
                     color: '#ffffff',
                     fontFamily: SceneKeys.Font
                 })
                     .setOrigin(0.5)
+        
+        
+                // ready player one
+                const startPlayint = this.add.text(400, 420, 'Press Spacebar To Play',
+                    {
+                        fontSize: '15px',
+                        fontFamily: SceneKeys.Font
+                    }).setOrigin(0.5, 0.5)
+        
+        
+                // press space to start playing   
+                this.input.keyboard.once('keydown-SPACE', () => {
+                    this.scene.start(SceneKeys.Game, { 'selectedBall': selectedBall })
+                })
+            } else {
+                let tempColor = assets[0].traits[1].value.replace('#', '0x')
 
-                await timer(300);
+                const tempCircle = this.add.circle(assetX, assetY, 10, tempColor, 10)
+                .setDisplaySize(20, 20)
+                      // this.add.text(playButton.x, playButton.y, element.name, {
+                        const tempAssetName = this.add.text(assetContainerX, assetContainerY, assets[0].name, {
+                            fontSize: '10px',
+                            color: '#ffffff',
+                            fontFamily: SceneKeys.Font
+                        })
+                            .setOrigin(0.5)
+                
+                
+                        // ready player one
+                        const startPlayint = this.add.text(400, 420, 'Press Spacebar To Play',
+                            {
+                                fontSize: '15px',
+                                fontFamily: SceneKeys.Font
+                            }).setOrigin(0.5, 0.5)
+                
+                        const selectedBall = 0
+                        // press space to start playing   
+                        this.input.keyboard.once('keydown-SPACE', () => {
+                            this.scene.start(SceneKeys.Game, { 'selectedBall': selectedBall })
+                        })
+            }
 
-                tempCircle.destroy();
-                tempAssetName.destroy();
-
-
-            };
-        }
-
-        // remove Randomly selecting WAGMIBALL messge
-        randomSelectText.destroy()
-
-        // select random int between 0 and length of assets - 1 to send to game scene
-        const selectedBall = Math.round(Phaser.Math.Between(0, assets.length - 1)) // Phaser.Math.Between(0, 360)
-
-        let tempColor = assets[selectedBall].traits[1].value.replace('#', '0x')
-
-        const tempCircle = this.add.circle(assetX, assetY, 10, tempColor, 10)
-            .setDisplaySize(20, 20)
-
-
-
-        // this.add.text(playButton.x, playButton.y, element.name, {
-        const tempAssetName = this.add.text(assetContainerX, assetContainerY, assets[selectedBall].name, {
-            fontSize: '10px',
-            color: '#ffffff',
-            fontFamily: SceneKeys.Font
-        })
-            .setOrigin(0.5)
-
-
-        // ready player one
-        const startPlayint = this.add.text(400, 420, 'Press Spacebar To Play',
-            {
-                fontSize: '15px',
-                fontFamily: SceneKeys.Font
-            }).setOrigin(0.5, 0.5)
-
-
-        // press space to start playing   
-        this.input.keyboard.once('keydown-SPACE', () => {
-            this.scene.start(SceneKeys.Game, { 'selectedBall': selectedBall })
-        })
+       
 
     }
 

@@ -87,8 +87,12 @@ document
         getUserNFTs(userAddress);
       })
       .catch(function (error) {
-        console.log(error);
-        // alert('Sign wi')
+        console.log(error.message.toString());
+
+        if(error.message.toString().includes('Non ethereum enabled browser')) {
+          alert('Sign into MetaMask to play!')
+
+        }
         document.getElementById("connectMetamask").style.display = "block";
         document.getElementsByClassName("connecting")[0].style.display = "none";
       });

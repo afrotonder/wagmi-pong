@@ -130,8 +130,16 @@
     <script type="text/javascript" src="./main.js"></script>
 
     <script>
-      document.getElementById("year").innerHTML = `Afrotonder⚡${new Date().getFullYear().toString()}`
-    
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          document.getElementsByClassName("wagmiPong")[0].style.display =
+            "flex";
+        }, 300);
+      });
+      document.getElementById("year").innerHTML = `Afrotonder⚡${new Date()
+        .getFullYear()
+        .toString()}`;
+
       document
         .getElementById("infoToggle")
         .addEventListener("mouseover", function () {
