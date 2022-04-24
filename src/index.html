@@ -1,65 +1,77 @@
 <html style="display: flex; justify-content: center">
   <head>
     <link rel="shortcut icon" type="image/jpg" href="./favicon.ico" />
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/styles.css" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <title>Paddlez - A Pseudo-Random Web3 Experience</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <meta property="description" content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain." />
-  <meta name="keywords" content="nft,nfts,web3,art,public domain">
-  <meta name="author" content="Afrotonder">
+    <meta
+      property="description"
+      content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain."
+    />
+    <meta name="keywords" content="nft,nfts,web3,art,public domain" />
+    <meta name="author" content="Afrotonder" />
 
-  <meta property="og:type" content="site" />
-  <meta property="og:title" content="Paddlez - A Pseudo-Random Web3 Experience" />
-  <meta property="og:description" content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain." />
-  <meta property="og:image"  content="../public/assets/wagmiballz.png">
-  <meta name="twitter:image" content="../public/assets/wagmiballz.png">
-  <meta property="og:site_name" content="Paddlez - A Pseudo-Random Web3 Experience" />
-
+    <meta property="og:type" content="site" />
+    <meta
+      property="og:title"
+      content="Paddlez - A Pseudo-Random Web3 Experience"
+    />
+    <meta
+      property="og:description"
+      content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain."
+    />
+    <meta property="og:image" content="../public/assets/wagmiballz.png" />
+    <meta name="twitter:image" content="../public/assets/wagmiballz.png" />
+    <meta
+      property="og:site_name"
+      content="Paddlez - A Pseudo-Random Web3 Experience"
+    />
   </head>
 
-  <div id="infoToggle" class="info" onmouseover="renderModal()" >
-    <p  style="margin: auto;" >
-      ❓
-    
-      </p>
+  <div id="infoToggle" class="info" onmouseover="renderModal()">
+    <p style="margin: auto">❓</p>
   </div>
- 
 
   <body class="wagmiPong">
-
     <section class="mobile">
       <h1>Paddlez</h1>
       <p class="subtitle">A Pseudo-Random Web3 Experience</p>
       <div class="paddlezDesc">
         <article>
-          <p>Paddlez is an old school digital tennis game  exclusively available for WAGMIBALLZ Holders. </p>
+          <p>
+            Paddlez is an old school digital tennis game exclusively available
+            for WAGMIBALLZ Holders.
+          </p>
           <!-- </br></br> -->
           <div class="ballContainer">
-            <img class="wagmiballz" src="../public/assets/WAGMIBALLZ.gif" alt="WAGMIBALLZgif">
+            <img
+              class="wagmiballz"
+              src="../public/assets/WAGMIBALLZ.gif"
+              alt="WAGMIBALLZgif"
+            />
           </div>
           <!-- </br></br> -->
-  
+
           <p>
-            WAGMIBALLZ are a collection of programatically/randomly 
-            generated NFTs in the Ethereum blockchain, 
-            hosted on IPFS, minted for free, and published in the Public Domain.
+            WAGMIBALLZ are a collection of programatically/randomly generated
+            NFTs in the Ethereum blockchain, hosted on IPFS, minted for free,
+            and published in the Public Domain.
           </p>
 
           <div class="buttons">
             <button>
-                <a target="_blank" href="https://opensea.io/collection/wagmiballz"></a>
+              <a
+                target="_blank"
+                href="https://opensea.io/collection/wagmiballz"
+              ></a>
               Buy WAGMIBALLZ @OpenSea
             </button>
           </div>
-
         </article>
-        
       </div>
-
-     
     </section>
 
     <!-- TV image -->
@@ -67,22 +79,24 @@
 
     <!--  -->
     <div class="tv">
-      <div class="connectWallet" style="display: flex; flex-direction: column;">
-        <button class="connectButton" id="connectMetamask">Connect Wallet</button>
-        <p class="connecting">Connecting...</p>
-        <p class="noWagmiballz">You dont have any WAGMIBALLZ! Get your's at OpenSea!</p>
-          <a target="_blank" href="https://opensea.io/collection/wagmiballz">
-        <button class="openSea">
-
-  <p> Buy WAGMIBALLZ @OpenSea </p>
+      <div class="connectWallet" style="display: flex; flex-direction: column">
+        <button class="connectButton" id="connectMetamask">
+          Connect Wallet
         </button>
-          </a>
-        
+        <p class="connecting">Connecting...</p>
+        <p class="noWagmiballz">
+          You dont have any WAGMIBALLZ! Get your's at OpenSea!
+        </p>
+        <a target="_blank" href="https://opensea.io/collection/wagmiballz">
+          <button class="openSea">
+            <p>Buy WAGMIBALLZ @OpenSea</p>
+          </button>
+        </a>
       </div>
     </div>
 
     <!-- bucket element that emulates a click to update scene, not change to a diff one -->
-    <div style="display: none; visibility: hidden;" id="done"></div>
+    <div style="display: none; visibility: hidden" id="done"></div>
     <div class="infoModal">
       <p>Obstacles:</p>
 
@@ -92,8 +106,6 @@
         <li>Invisible wagmiwallz</li>
         <li>Spawn random Lvl 1-2 obstacles</li>
         <li>Shrink</li>
-
-
       </ul>
 
       <p>Concepts:</p>
@@ -104,9 +116,7 @@
         <li>Clustering</li>
 
         <li>Frenzy Mode:</li>
-        
       </ul>
-
     </div>
     <footer class="footer">
       <div class="instructions">
@@ -115,40 +125,37 @@
         <p class="gamepad">→ = Bottom Tilt</p>
         <p class="gamepad">← = Top Tilt</p>
       </div>
-      <p id="year" style="text-decoration: none;"></p>
+      <p id="year" style="text-decoration: none"></p>
     </footer>
 
-
-    
     <script type="text/javascript" src="./main.js"></script>
 
-    <script >
-      document.getElementById("year").innerHTML = `<a style='text-decoration: none;' target='_blank' href="https://www.twitter.com/afrotonder" >Afrotonder⚡</a>` + new Date()
-        .getFullYear()
-        .toString();
-
-
-        document.getElementById('infoToggle').addEventListener("mouseover", function() {
-          console.log('mouse overt');
-          renderModal(true)
+    <script>
+      document.getElementById("year").innerHTML = `Afrotonder⚡${new Date().getFullYear().toString()}`
+    
+      document
+        .getElementById("infoToggle")
+        .addEventListener("mouseover", function () {
+          console.log("mouse overt");
+          renderModal(true);
         });
 
-        document.getElementById('infoToggle').addEventListener("mouseout", function() {
-          console.log('mouseout');
-          renderModal(false)
-        }
-          );
-  
+      document
+        .getElementById("infoToggle")
+        .addEventListener("mouseout", function () {
+          console.log("mouseout");
+          renderModal(false);
+        });
 
       function renderModal(userHover) {
-
         if (userHover) {
-          document.getElementsByClassName('infoModal')[0].style.display = 'block'
+          document.getElementsByClassName("infoModal")[0].style.display =
+            "block";
         } else {
-          document.getElementsByClassName('infoModal')[0].style.display = 'none'
+          document.getElementsByClassName("infoModal")[0].style.display =
+            "none";
         }
       }
-
     </script>
   </body>
 </html>
