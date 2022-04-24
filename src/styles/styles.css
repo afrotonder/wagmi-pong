@@ -3,7 +3,14 @@
   src: url("../../public/assets/PressStart2P-Regular.ttf");
   }
   
-   
+   a:link {
+     color: gold;
+     text-decoration: none;
+   }
+   a:visited {
+      color: rgb(80, 78, 78);
+   }
+
 :root {
     font-family: 'Press Start 2P';
 
@@ -16,6 +23,41 @@
 body {
   display: flex;
   justify-content: center;
+
+
+}
+
+.noWagmiballz {
+  display: none;
+  width: 62%;
+  margin: auto auto 4% auto;
+  line-height: 2;
+}
+
+.infoModal {
+  display: none;
+  background-color: red;
+
+  /* display: flex; */
+  left: 0;
+  position: absolute;
+  width: 250px;
+  z-index: 400;
+  border: 2px black solid;
+  border-radius: 5px;
+  margin-top: -25px;
+padding-left: 14px;
+  font-size: 9px;
+    line-height: 1.5;
+  
+  background: #abbaab;  /* fallback for old browsers */
+  background-repeat: no-repeat ;
+  background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+   
+
+  
 }
 
 .footer {
@@ -25,7 +67,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  z-index: -10;
+  /* z-index: -10; */
 font-size: 10px;
 }
 
@@ -47,14 +89,31 @@ font-size: 10px;
 
   text-align: center;
   margin: auto;
-  font-size: 22px;
+  font-size: 20px;
   color: black;
   /* font-weight: bold; */
+  /* width: 70%; */
 }
 
 .openSea {
   display: none;
-  width: 20%; margin-left: auto; margin-right: auto;
+  visibility: hidden;
+  /* width: 20%;  */
+  margin-left: auto;
+   margin-right: auto;
+
+   font-family: 'Press Start 2P';
+   height: 42px;
+   border-radius: 5px;
+   border: none;
+   color: white;
+   background-color: #2081e2;
+   font-size: 11px;
+   text-decoration: none;
+}
+
+.opensea p {
+  margin: auto ;
 }
 
 .tvContainer {
@@ -126,13 +185,17 @@ canvas {
   background-color: chartreuse;
   border: 2px black solid;
   border-radius: 50%;
-  width: 20px;
-  height: 25px;
+  width: 21px;
+  height: 22px;
   margin: 5px;
-  padding-left: 3px;
-  font-size: 17px;
-  margin-left: 2px;
+  /* padding-left: 3px; */
+  /* font-size: 17px; */
+  /* margin-left: 2px; */
   display: block;
+}
+
+.info:hover {
+  background-color: rgb(204, 226, 170);
 }
 
 @media only screen and (max-width: 600px) {
