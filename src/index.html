@@ -37,8 +37,17 @@
 
   <body class="wagmiPong">
     <section class="mobile">
-      <h1>Paddlez</h1>
-      <p class="subtitle">A Pseudo-Random Web3 Experience</p>
+      <nav class="mobileHeader">
+        <img class="sugar" src="../public/assets/p1.gif" alt="" />
+
+        <article>
+          <h1>Paddlez</h1>
+          <p class="subtitle">A Pseudo-Random Web3 Experience</p>
+        </article>
+        
+        <img class="sugar" src="../public/assets/p2.gif" alt="" />
+      </nav>
+
       <div class="paddlezDesc">
         <article>
           <p>
@@ -49,7 +58,7 @@
           <div class="ballContainer">
             <img
               class="wagmiballz"
-              src="../public/assets/WAGMIBALLZ.gif"
+              src="../public/assets/WAGMIBALLZ_PROMO.gif"
               alt="WAGMIBALLZgif"
             />
           </div>
@@ -62,14 +71,9 @@
           </p>
 
           <div class="buttons">
-            <a
-            target="_blank"
-            href="https://opensea.io/collection/wagmiballz"
-          >
-            <button>
-             
-              Buy WAGMIBALLZ @OpenSea
-            </button></a>
+            <a target="_blank" href="https://opensea.io/collection/wagmiballz">
+              <button>Buy WAGMIBALLZ @OpenSea</button></a
+            >
           </div>
         </article>
       </div>
@@ -102,56 +106,75 @@
       <p class="intoTitle">Obstacles:</p>
 
       <ul class="obstacleList">
-        <li>Wagmiwallz
-        <video class="infoVideo" width="320" height="220" autoplay loop>
-          <source src="../public/assets/wagmiwallz.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </li>
-        <li>Fake Wagmiballz
-        <video class="infoVideo" width="320" height="220" autoplay loop>
-          <source src="../public/assets/wagmiballz.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </li>
-       
-        <li>Shrink
-        <video class="infoVideo" width="320" height="220" autoplay loop>
-          <source src="../public/assets/shrink.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </li>
+        <li>
+          Wagmiwallz
+          <video
+            class="infoVideo"
+            width="320"
+            height="220"
+            autoplay
+            loop
+            autoplay="autoplay"
+            muted="muted"
+          >
+            <source src="../public/assets/wagmiwallz.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </li>
+        <li>
+          Fake Wagmiballz
+          <video class="infoVideo" width="320" height="220" autoplay loop   autoplay="autoplay"
+          muted="muted">
+            <source src="../public/assets/wagmiballz.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </li>
+
+        <li>
+          Shrink
+          <video class="infoVideo" width="320" height="220" autoplay loop autoplay="autoplay"
+          muted="muted">
+            <source src="../public/assets/shrink.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </li>
       </ul>
       <ul class="obstacleList">
-        <li>Intercontinental Ballistic Missile
-          <video class="infoVideo" width="320" height="220" autoplay loop>
+        <li>
+          Intercontinental Ballistic Missile
+          <video class="infoVideo" width="320" height="220" autoplay loop  autoplay="autoplay"
+          muted="muted">
             <source src="../public/assets/ICBM.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </li>
 
-        <li>Invisible wagmiwallz
+        <li>
+          Invisible wagmiwallz
 
-          <video class="infoVideo" width="320" height="220" autoplay loop>
+          <video class="infoVideo" width="320" height="220" autoplay loop  autoplay="autoplay"
+          muted="muted">
             <source src="../public/assets/invwagmiwallz.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </li>
 
-        <li>Frenzy Mode
-        <video class="infoVideo" width="320" height="220" autoplay loop>
-          <source src="../public/assets/clustering.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video></li>
-       
+        <li>
+          Frenzy Mode
+          <video class="infoVideo" width="320" height="220" autoplay loop  autoplay="autoplay"
+          muted="muted">
+            <source src="../public/assets/clustering.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </li>
       </ul>
     </div>
     <footer class="footer">
       <div class="instructions">
-        <p class="gamepad">↑ / W = Up Paddle</p>
-        <p class="gamepad">↓ / S = Down Paddle</p>
-        <p class="gamepad">→ / D = Bottom Tilt</p>
-        <p class="gamepad">← / A = Top Tilt</p>
+        <p class="gamepad">↑/W = Up Paddle</p>
+        <p class="gamepad">↓/S = Down Paddle</p>
+        <p class="gamepad">→/D = Bottom Tilt</p>
+        <p class="gamepad">←/A = Top Tilt</p>
       </div>
       <p id="year" style="text-decoration: none"></p>
     </footer>

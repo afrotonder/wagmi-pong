@@ -62,7 +62,7 @@ flex-direction: column;
   /* display: flex; */
   left: 0;
   position: absolute;
-  width:  58%;
+  width:  1155px ; 
   z-index: 400;
   border: 2px black solid;
   border-radius: 5px;
@@ -110,7 +110,7 @@ flex-direction: column;
 
 .gamepad {
   margin: 0 5px 0 20px;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .connecting {
@@ -229,7 +229,21 @@ canvas {
   background-color: rgb(204, 226, 170);
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 750px) { */
+@media only screen and (max-width: 900px) {
+
+
+  .mobileHeader {
+    display: flex;
+    justify-content: center;
+  }
+  .sugar {
+    width: 50px;
+  }
+
+  .infoModal {
+    display: none !important;
+  }
   /* body {
     background-color: lightblue;
   } */
@@ -286,6 +300,21 @@ canvas {
     border: 2px solid black;
     border-radius: 5px;
     padding: 6px;
+
+
+
+    background: #abbaab; /* fallback for old browsers */
+    background-repeat: no-repeat;
+    background: -webkit-linear-gradient(
+      to right,
+      #ffffff,
+      #abbaab
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #ffffff,
+      #abbaab
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 
   .subtitle {
@@ -306,18 +335,7 @@ canvas {
   }
 
   body {
-    background: #abbaab; /* fallback for old browsers */
-    background-repeat: no-repeat;
-    background: -webkit-linear-gradient(
-      to right,
-      #ffffff,
-      #abbaab
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to right,
-      #ffffff,
-      #abbaab
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
   }
 
   .instructions {
