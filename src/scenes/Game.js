@@ -449,6 +449,8 @@ export default class Game extends Phaser.Scene {
     const timer = (ms) => new Promise((res) => setTimeout(res, ms));
     let ogHeight = this.paddleRight.displayHeight;
 
+    console.log('never seen OG HEIGHT: ', ogHeight);
+
     if (this.paddleLeft.displayHeight >= ogHeight) {
       for (let j = 0; j < 3; j++) {
         for (let i = 0; i < 20; i++) {

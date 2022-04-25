@@ -24,6 +24,13 @@ body {
   justify-content: center;
 }
 
+.infoVideo {
+  border-radius: 22px;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  /* border-bottom: 18px; */
+}
+
 .noWagmiballz {
   display: none;
   width: 62%;
@@ -31,14 +38,31 @@ body {
   line-height: 2;
 }
 
+.intoTitle {
+  /* position: absolute; */
+  margin: 5px;
+  
+}
+
+.obstacleList {
+  /* margin-top: 10px; */
+  display: inherit;
+  margin-right: 55px;
+}
+
+.obstacleList li {
+  margin: 1.5%;
+  width: min-content;
+}
+
 .infoModal {
   display: none;
   background-color: red;
-
+flex-direction: column;
   /* display: flex; */
   left: 0;
   position: absolute;
-  width: 250px;
+  width:  58%;
   z-index: 400;
   border: 2px black solid;
   border-radius: 5px;
@@ -46,6 +70,10 @@ body {
   padding-left: 14px;
   font-size: 9px;
   line-height: 1.5;
+
+  /* overflow: scroll;
+  overflow-y: scroll; */
+  height: auto;
 
   background: #abbaab; /* fallback for old browsers */
   background-repeat: no-repeat;

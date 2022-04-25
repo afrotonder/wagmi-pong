@@ -62,13 +62,14 @@
           </p>
 
           <div class="buttons">
+            <a
+            target="_blank"
+            href="https://opensea.io/collection/wagmiballz"
+          >
             <button>
-              <a
-                target="_blank"
-                href="https://opensea.io/collection/wagmiballz"
-              ></a>
+             
               Buy WAGMIBALLZ @OpenSea
-            </button>
+            </button></a>
           </div>
         </article>
       </div>
@@ -98,23 +99,51 @@
     <!-- bucket element that emulates a click to update scene, not change to a diff one -->
     <div style="display: none; visibility: hidden" id="done"></div>
     <div class="infoModal">
-      <p>Obstacles:</p>
+      <p class="intoTitle">Obstacles:</p>
 
-      <ul>
-        <li>Wagmiwallz</li>
-        <li>Fake Wagmiballz</li>
-        <li>Invisible wagmiwallz</li>
-        <li>Shrink</li>
+      <ul class="obstacleList">
+        <li>Wagmiwallz
+        <video class="infoVideo" width="320" height="220" autoplay loop>
+          <source src="../public/assets/wagmiwallz.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </li>
+        <li>Fake Wagmiballz
+        <video class="infoVideo" width="320" height="220" autoplay loop>
+          <source src="../public/assets/wagmiballz.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </li>
+       
+        <li>Shrink
+        <video class="infoVideo" width="320" height="220" autoplay loop>
+          <source src="../public/assets/shrink.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </li>
       </ul>
+      <ul class="obstacleList">
+        <li>Intercontinental Ballistic Missile
+          <video class="infoVideo" width="320" height="220" autoplay loop>
+            <source src="../public/assets/ICBM.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </li>
 
-      <p>Concepts:</p>
+        <li>Invisible wagmiwallz
 
-      <ul>
-        <li>Intercontinental Ballistic Missile (ICBM)</li>
+          <video class="infoVideo" width="320" height="220" autoplay loop>
+            <source src="../public/assets/invwagmiwallz.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </li>
 
-        <li>Clustering</li>
-
-        <li>Frenzy Mode:</li>
+        <li>Frenzy Mode
+        <video class="infoVideo" width="320" height="220" autoplay loop>
+          <source src="../public/assets/clustering.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video></li>
+       
       </ul>
     </div>
     <footer class="footer">
@@ -157,7 +186,7 @@
       function renderModal(userHover) {
         if (userHover) {
           document.getElementsByClassName("infoModal")[0].style.display =
-            "block";
+            "flex";
         } else {
           document.getElementsByClassName("infoModal")[0].style.display =
             "none";
