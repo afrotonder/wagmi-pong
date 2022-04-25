@@ -38,7 +38,8 @@ export default class Game extends Phaser.Scene {
     this.sound.loop = true;
     // this.sound.once('loop', function(music, loop){});
     let audioConfig = {
-      loop: true
+      loop: true,
+      volume: 0.3
     }
     
     this.sound.play(Audio.Title, audioConfig);
@@ -267,32 +268,47 @@ export default class Game extends Phaser.Scene {
     /** @type { Phaser.Physics.Arcade.Body } */
     const body = this.paddleLeft.body;
 
-    if (this.cursors.up.isDown || this.keyA.isDown) {
+    if (this.cursors.up.isDown || this.keyW.isDown) {
       if (this.paddleLeft.y >= 40) {
         this.paddleLeft.y += -10;
         body.updateFromGameObject();
       }
-    } else if (this.cursors.down.isDown) {
+    } else if (this.cursors.down.isDown || this.keyS.isDown) {
       if (this.paddleLeft.y <= 460) {
         this.paddleLeft.y += 10;
         body.updateFromGameObject();
       }
     }
 
-    if (this.cursors.left.isDown) {
+    if (this.cursors.left.isDown ) {
       this.paddleLeft.angle = 10;
       body.updateFromGameObject();
     }
 
-    if (this.cursors.right.isDown) {
+    if (this.keyA.isDown) {
+      this.paddleLeft.angle = 10;
+      body.updateFromGameObject();
+    }
+
+    if (this.cursors.right.isDown ) {
       this.paddleLeft.angle = -10;
       body.updateFromGameObject();
     }
 
-    if (this.cursors.right.isUp && this.cursors.left.isUp) {
+    if (this.keyD.isDown) {
+      this.paddleLeft.angle = -10;
+      body.updateFromGameObject();
+    }
+
+    if ( (this.cursors.right.isUp && this.keyD.isUp)  && (this.cursors.left.isUp && this.keyA.isUp)) {
       this.paddleLeft.angle = 0;
       body.updateFromGameObject();
     }
+
+    // if (this.keyA.isUp && this.keyD.isUp) {
+    //   this.paddleLeft.angle = 0;
+    //   body.updateFromGameObject();
+    // }
   }
 
   // increments left/right score depending on param
@@ -448,8 +464,6 @@ export default class Game extends Phaser.Scene {
   async shrinkPlayer() {
     const timer = (ms) => new Promise((res) => setTimeout(res, ms));
     let ogHeight = this.paddleRight.displayHeight;
-
-    console.log('never seen OG HEIGHT: ', ogHeight);
 
     if (this.paddleLeft.displayHeight >= ogHeight) {
       for (let j = 0; j < 3; j++) {

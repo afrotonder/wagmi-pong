@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "firebase": "^9.6.10",
-    "moralis": "^1.5.9",
+    "moralis": "^1.5.10",
     "parcel-bundler": "^1.12.5",
     "parsel": "^0.3.0",
     "phaser": "^3.55.2",
