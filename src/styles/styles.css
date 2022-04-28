@@ -232,7 +232,14 @@ canvas {
 /* @media only screen and (max-width: 750px) { */
 @media only screen and (max-width: 900px) {
 
-
+  .banner {
+    display: block;
+    width: 280px;
+  }
+  canvas {
+    display: none;
+  }
+  
   .mobileHeader {
     display: flex;
     justify-content: center;
