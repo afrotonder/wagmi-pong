@@ -233,7 +233,7 @@ export default class Game extends Phaser.Scene {
       this.incrementScore("left");
     }
 
-    const maxScore = 25;
+    const maxScore = 20;
 
     if (this.leftScore >= maxScore) {
       // this.paused = true
@@ -349,56 +349,60 @@ export default class Game extends Phaser.Scene {
 
     if (total > 1 && total <= 5) {
       flag = Phaser.Math.Between(1, 2); //  [1,2, ][Math.round(Math.random())]
-      this.renderObstacle(flag)
+      // this.renderObstacle(flag)
 
     } else if (total > 5 && total <= 8) {
       flag = Phaser.Math.Between(2, 4); //  [1,2, ][Math.round(Math.random())]
-      this.renderObstacle(flag)
-      this.renderObstacle(2)
+      // this.renderObstacle(flag)
+      // this.renderObstacle(2)
 
-    } else if (total > 8 && total < 12) {
+    } else if (total > 10) {
       flag = Phaser.Math.Between(3, 5); //  [1,2, ][Math.round(Math.random())]
-      this.renderObstacle(flag)
-      let randomNum = Phaser.Math.Between(1, 5)
+      // this.renderObstacle(flag)
+      // let randomNum = Phaser.Math.Between(1, 5)
+      // this.renderObstacle(randomNum)
 
-      this.renderObstacle(randomNum)
-
-    } else if (total >= 12) {
-
-
-      for (let i = 2; i < 6; i++) {
-        // let randomNum = Phaser.Math.Between(1, 5)
-
-        this.renderObstacle(i)
-      }
-    
     }
+    //  else if (total >= 12) {
+    //   // for (let i = 2; i < 6; i++) {
+    //   //   this.renderObstacle(i)
+    //   // }
+    
+    // }
 
     // set switch statewment with functions
-    // switch (flag) {
-    //   case 1: // generates a wagmiwall
-    //     this.genRandomWallz();
-    //     break;
-    //   case 2: // generates fake wagmiballz
-    //     this.genRandomBallz();
-    //     this.genRandomWallz();
-    //     break;
-    //   case 3: // generates an invisible wagmiwall & some lower level obstacle
-    //     // this.genInvisibleWallz()
-    //     this.genRandomBallz();
-    //     this.setRandomObstable(6); // feed static param <= 5 so it spawns a lower level obstacle
-    //     break;
-    //   case 4:
-    //     // this.genInvisibleWallz()
-    //     this.shrinkPlayer();
-    //     // this.genRandomBallz()
-    //     this.genInvisibleWallz();
-    //     this.setRandomObstable(9); // feed static param <= 5 so it spawns a lower level obstacle
+    switch (flag) {
+      case 1: // generates a wagmiwall
+        this.genRandomWallz();
+        break;
+      case 2: // generates fake wagmiballz
+        this.genRandomBallz();
+        this.genRandomWallz();
+        break;
+      case 3: // generates an invisible wagmiwall & some lower level obstacle
+        // this.genInvisibleWallz()
+        this.genRandomBallz();
+        this.setRandomObstable(6); // feed static param <= 5 so it spawns a lower level obstacle
+        break;
+      case 4:
+        // this.genInvisibleWallz()
+        this.shrinkPlayer();
+        this.genRandomBallz()
+        this.genInvisibleWallz();
+        this.setRandomObstable(9); // feed static param <= 5 so it spawns a lower level obstacle
 
-    //     break;
-    //   default:
-    //   // code block
-    // }
+        break;
+      case 5:
+        this.slowPlayer();
+        this.shrinkPlayer();
+
+        this.setRandomObstable(11); // feed static param <= 5 so it spawns a lower level obstacle
+      break;
+      default:
+        // this.setRandomObstable(9); // feed static param <= 5 so it spawns a lower level obstacle
+        break;
+      // code block
+    }
 
    
   }
@@ -428,20 +432,20 @@ export default class Game extends Phaser.Scene {
   }
 
  async slowPlayer() {
-
+  console.log('SLOWING PLAWET');
    /** @type { Phaser.Physics.Arcade.Body } */
    const body = this.paddleLeft.body;
     const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
 
-    for (let i = 0; i < 20; i++) {
-       this.paddleLeft.y += 1;
+    for (let i = 0; i < 200; i++) {
+       this.paddleLeft.y = Phaser.Math.Between(1, -1);
     body.updateFromGameObject();
     }
    
 
 
-    await timer(500);
+    // await timer(500);
 
   }
 
