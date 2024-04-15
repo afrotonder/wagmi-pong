@@ -44,9 +44,9 @@ export default class Game extends Phaser.Scene {
     
     this.sound.play(Audio.Title, audioConfig);
 
-    let assets = wagmiballz.wagmiballz.filter((ball) => ball.traits.length > 0);
+    let assets = wagmiballz.wagmiballz.filter((ball) => ball.attributes.length > 0);
 
-    this.color = assets[this.selectedAsset].traits[1].value.replace("#", "0x");
+    this.color = assets[this.selectedAsset].attributes[1].value.replace("#", "0x");
 
     this.scene.run(SceneKeys.GameBackground);
 
@@ -432,8 +432,8 @@ export default class Game extends Phaser.Scene {
   }
 
  async slowPlayer() {
-  console.log('SLOWING PLAWET');
-   /** @type { Phaser.Physics.Arcade.Body } */
+
+  /** @type { Phaser.Physics.Arcade.Body } */
    const body = this.paddleLeft.body;
     const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 

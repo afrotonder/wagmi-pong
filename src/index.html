@@ -9,7 +9,7 @@
 
     <meta
       property="description"
-      content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain."
+      content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programmatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain."
     />
     <meta name="keywords" content="nft,nfts,web3,art,public domain" />
     <meta name="author" content="Afrotonder" />
@@ -21,7 +21,7 @@
     />
     <meta
       property="og:description"
-      content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain."
+      content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programmatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain."
     />
     <meta property="og:image" content="../public/assets/wagmiballz.png" />
     <meta name="twitter:image" content="../public/assets/wagmiballz.png" />
@@ -37,7 +37,7 @@
 
   <body class="wagmiPong">
     <section class="mobile">
-      <nav class="mobileHeader">
+      <nav class="mobileHeader" style="position: inherit;">
         <img class="sugar" src="../public/assets/p1.gif" alt="" />
 
         <article>
@@ -66,14 +66,14 @@
           <!-- </br></br> -->
 
           <p>
-            WAGMIBALLZ are a collection of programatically/randomly generated
+            WAGMIBALLZ are a collection of programmatically/randomly generated
             NFTs in the Ethereum blockchain, hosted on IPFS, minted for free,
             and published in the Public Domain.
           </p>
 
           <div class="buttons">
-            <a target="_blank" href="https://opensea.io/collection/wagmiballz">
-              <button>Buy WAGMIBALLZ @OpenSea</button></a
+            <a target="_blank" href="https://wagmiballznft.web.app/home">
+              <button>Buy WAGMIBALLZ</button></a
             >
           </div>
         </article>
@@ -89,13 +89,16 @@
         <button class="connectButton" id="connectMetamask">
           Connect Wallet
         </button>
+        <!-- <div class="connectButtonDisabled">
+          Game will be open when WAGMIBALLZ minting is done. 👀🕹️
+        </div> -->
         <p class="connecting">Connecting...</p>
         <p class="noWagmiballz">
           You dont have any WAGMIBALLZ! Get your's at OpenSea!
         </p>
-        <a target="_blank" href="https://opensea.io/collection/wagmiballz">
+        <a target="_blank" href="https://wagmiballznft.web.app/home">
           <button class="openSea">
-            <p>Buy WAGMIBALLZ @OpenSea</p>
+            <p>Buy WAGMIBALLZ</p>
           </button>
         </a>
       </div>
@@ -177,9 +180,13 @@
         <p class="gamepad">→/D = Bottom Tilt</p>
         <p class="gamepad">←/A = Top Tilt</p>
       </div>
-      <p id="year" style="text-decoration: none"></p>
-    </footer>
 
+      <div style="display: flex; flex-direction: row; justify-content: space-evenly">
+        <p id="year" style="text-decoration: none"></p>
+        <p style="text-decoration: none">Music by <a target="_blank" href="https://www.youtube.com/watch?v=tLRbAxHFMjs">Aim to Head Official</a></p>
+      </div>
+     
+    </footer>
     <script type="text/javascript" src="./main.js"></script>
 
     <script>
@@ -189,9 +196,11 @@
             "flex";
         }, 300);
       });
-      document.getElementById("year").innerHTML = `Afrotonder⚡${new Date()
+      document.getElementById("year").innerHTML = `<a href="https://twitter.com/Afrotonder">Afrotonder⚡</a>
+        ${new Date()
         .getFullYear()
-        .toString()}`;
+        .toString()} 
+`;
 
       document
         .getElementById("infoToggle")

@@ -57,10 +57,12 @@ export default class TitleScreen extends Phaser.Scene {
 
         const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
-        let assets = wagmiballz.wagmiballz.filter(ball => ball.traits.length > 0)
+        // let assets = wagmiballz.wagmiballz.filter(ball => ball.traits?.length > 0  )
+
+        let assets = wagmiballz.wagmiballz.filter(ball => ball.attributes?.length > 0 )
 
 
-
+console.log(assets);
 
 
         const { width, height } = this.scale
@@ -86,7 +88,7 @@ export default class TitleScreen extends Phaser.Scene {
                 for (let element of assets) {
 
                     // get asset color from metadata
-                    let color = element.traits[1].value.replace('#', '0x')
+                    let color = element.attributes[1].value.replace('#', '0x')
 
 
                     // set asset placeholder
@@ -115,7 +117,7 @@ export default class TitleScreen extends Phaser.Scene {
             // select random int between 0 and length of assets - 1 to send to game scene
             const selectedBall = Math.round(Phaser.Math.Between(0, assets.length - 1)) // Phaser.Math.Between(0, 360)
 
-            let tempColor = assets[selectedBall].traits[1].value.replace('#', '0x')
+            let tempColor = assets[selectedBall].attributes[1].value.replace('#', '0x')
 
             const tempCircle = this.add.circle(assetX, assetY, 10, tempColor, 10)
                 .setDisplaySize(20, 20)
@@ -144,7 +146,7 @@ export default class TitleScreen extends Phaser.Scene {
                 this.scene.start(SceneKeys.Game, { 'selectedBall': selectedBall })
             })
         } else {
-            let tempColor = assets[0].traits[1].value.replace('#', '0x')
+            let tempColor = assets[0].attributes[1].value.replace('#', '0x')
 
             const tempCircle = this.add.circle(assetX, assetY, 10, tempColor, 10)
                 .setDisplaySize(20, 20)

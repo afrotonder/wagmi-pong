@@ -31,30 +31,47 @@ async function getUserNFTs(address) {
 
     let allUserNFTs = polyAssets.concat(ethAssets.result);
 
+    // console.log('user nfts ', allUserNFTs);
+
     for (let asset of allUserNFTs) {
       let nft = JSON.parse(asset.metadata);
 
-      if (!!nft && !!nft.name && !!nft.description) {
-        let nftName = !!nft.name === true ? nft.name : "";
-        let nftDesc = !!nft.description === true ? nft.description : "";
+      let nftCollection = !!asset.name === true ? asset.name : "";
+      // console.log('collection ', nftCollection);
+      // console.log('nft ', nft);
 
-        if (nftName.includes("Wagmiballz") || nftDesc.includes("Wagmiballz")) {
+      if (!!nft && !!nft.name && !!nft.description) {
+        // let nftName = !!nft.name === true ? nft.name : "";
+        // let nftDesc = !!nft.description === true ? nft.description : "";
+
+      // console.log('nft name', nftName.toLowerCase());
+      // console.log('nft desc ', nftDesc.toLowerCase());
+
+      // if (nftName.toLowerCase().includes("wagmiballz") || nftDesc.toLowerCase().includes("wagmiballz") || nftCollection.toLowerCase().includes("wagmiballz")) {
+        if ( nftCollection.includes("WAGMIBALLZ")) {
+          // console.log('wagmiballz ', nft);
           wagmiballz.push(nft);
         }
       }
     }
 
+    // console.log('qhay !!!', wagmiballz);
+
     if (wagmiballz.length) {
+      // console.log('got wagmiballz!');
       document.getElementsByClassName("tvContainer")[0].style.display = "none";
+      // console.log('hide connect wallet button');
       document.getElementsByClassName("connectWallet")[0].style.display =
         "none";
-
+      // console.log('canvas display flex');
       document.querySelectorAll("canvas")[0].style.display = "flex";
       // return wagmiballz
+      // console.log('done 🦊');
       document.getElementById("done").click();
       //  this.game.scene.start('titleScreen')
       //         this.game.scene.start(SceneKeys.Preload)
     } else {
+      // console.log('VAN ELSING 🧛🏾🧛🏾🧛🏾');
       // alert('Plz go buy a wagmiball @ OpenSea!')
       document.getElementsByClassName('openSea')[0].style.visibility = 'visible'
       document.getElementsByClassName('openSea')[0].style.display = 'flex'
@@ -64,7 +81,7 @@ async function getUserNFTs(address) {
 
     }
   } catch (error) {
-    console.log(error);
+    console.log('err reading assets: ',error);
   }
 }
 

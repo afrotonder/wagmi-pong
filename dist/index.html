@@ -1,205 +1,185 @@
 <html style="display: flex; justify-content: center">
   <head>
     <link rel="shortcut icon" type="image/jpg" href="/favicon.26242483.ico">
+    <link rel="stylesheet" href="/styles.956d002c.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
 
-    <title>WAGMI PONG</title>
-  </head>
+    <title>Paddlez - A Pseudo-Random Web3 Experience</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <meta property="description" content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain.">
+    <meta name="keywords" content="nft,nfts,web3,art,public domain">
+    <meta name="author" content="Afrotonder">
+
+    <meta property="og:type" content="site">
+    <meta property="og:title" content="Paddlez - A Pseudo-Random Web3 Experience">
+    <meta property="og:description" content="Paddlez is an old school digital tennis game for WAGMIBALLZ. WAGMIBALLZ are a collection of programatically/randomly generated NFTs in the Ethereum blockchain, hosted on IPFS, minted for free, and published in the Public Domain.">
+    <meta property="og:image" content="/wagmiballz.84877720.png">
+    <meta name="twitter:image" content="/wagmiballz.84877720.png">
+    <meta property="og:site_name" content="Paddlez - A Pseudo-Random Web3 Experience">
+  <script src="/styles.956d002c.js"></script></head>
+
+  <div id="infoToggle" class="info" onmouseover="renderModal()">
+    <p style="margin: auto">❓</p>
+  </div>
 
   <body class="wagmiPong">
+    <section class="mobile">
+      <nav class="mobileHeader" style="position: inherit;">
+        <img class="sugar" src="/p1.e82a448d.gif" alt="">
+
+        <article>
+          <!-- <h1>Paddlez</h1> -->
+          <img class="banner" src="/banner.4cdd215d.png" alt="">
+          <p class="subtitle">A Pseudo-Random Web3 Experience</p>
+        </article>
+        
+        <img class="sugar" src="/p2.e4581146.gif" alt="">
+      </nav>
+
+      <div class="paddlezDesc">
+        <article>
+          <p>
+            Paddlez is an old school digital tennis game exclusively available
+            for WAGMIBALLZ Holders.
+          </p>
+          <!-- </br></br> -->
+          <div class="ballContainer">
+            <img class="wagmiballz" src="/WAGMIBALLZ_PROMO.a8f07f17.gif" alt="WAGMIBALLZgif">
+          </div>
+          <!-- </br></br> -->
+
+          <p>
+            WAGMIBALLZ are a collection of programatically/randomly generated
+            NFTs in the Ethereum blockchain, hosted on IPFS, minted for free,
+            and published in the Public Domain.
+          </p>
+
+          <div class="buttons">
+            <a target="_blank" href="https://opensea.io/collection/wagmiballz">
+              <button>Buy WAGMIBALLZ @OpenSea</button></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TV image -->
     <div class="tvContainer"></div>
 
+    <!--  -->
     <div class="tv">
-      <div class="connectWallet">
-        <!-- <button class="connectButton">Connect Wallet</button> -->
-        <input id="walletID" class="connectButton" type="text" placeholder="Enter Wallet Address">
+      <div class="connectWallet" style="display: flex; flex-direction: column">
+        <button class="connectButton" id="connectMetamask">
+          Connect Wallet
+        </button>
+        <!-- <div class="connectButtonDisabled">
+          Game will be open when WAGMIBALLZ minting is done. 👀🕹️
+        </div> -->
+        <p class="connecting">Connecting...</p>
+        <p class="noWagmiballz">
+          You dont have any WAGMIBALLZ! Get your's at OpenSea!
+        </p>
+        <a target="_blank" href="https://opensea.io/collection/wagmiballz">
+          <button class="openSea">
+            <p>Buy WAGMIBALLZ @OpenSea</p>
+          </button>
+        </a>
       </div>
     </div>
-    <!-- </div> -->
 
-    <footer style="
-        position: absolute;
-        bottom: 0;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        z-index: -10;
-      ">
-      <p id="year" style="text-decoration: none;"></p>
+    <!-- bucket element that emulates a click to update scene, not change to a diff one -->
+    <div style="display: none; visibility: hidden" id="done"></div>
+    <div class="infoModal">
+      <p class="intoTitle">Obstacles:</p>
+
+      <ul class="obstacleList">
+        <li>
+          Wagmiwallz
+          <video class="infoVideo" width="320" height="220" autoplay="" loop="" muted="muted">
+            <source src="/wagmiwallz.93b4f883.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </li>
+        <li>
+          Fake Wagmiballz
+          <video class="infoVideo" width="320" height="220" autoplay="" loop="" muted="muted">
+            <source src="/wagmiballz.8b566922.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </li>
+
+        <li>
+          Shrink
+          <video class="infoVideo" width="320" height="220" autoplay="" loop="" muted="muted">
+            <source src="/shrink.cf357cf4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </li>
+      </ul>
+      <ul class="obstacleList">
+        <li>
+          Intercontinental Ballistic Missile
+          <video class="infoVideo" width="320" height="220" autoplay="" loop="" muted="muted">
+            <source src="/ICBM.89cc70df.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </li>
+
+        <li>
+          Invisible wagmiwallz
+
+          <video class="infoVideo" width="320" height="220" autoplay="" loop="" muted="muted">
+            <source src="/invwagmiwallz.58521de3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </li>
+
+        <li>
+          Frenzy Mode
+          <video class="infoVideo" width="320" height="220" autoplay="" loop="" muted="muted">
+            <source src="/clustering.13f1723d.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </li>
+      </ul>
+    </div>
+    <footer class="footer">
+      <div class="instructions">
+        <p class="gamepad">↑/W = Up Paddle</p>
+        <p class="gamepad">↓/S = Down Paddle</p>
+        <p class="gamepad">→/D = Bottom Tilt</p>
+        <p class="gamepad">←/A = Top Tilt</p>
+      </div>
+
+      <div style="display: flex; flex-direction: row; justify-content: space-evenly">
+        <p id="year" style="text-decoration: none"></p>
+        <p style="text-decoration: none">Music by <a target="_blank" href="https://www.youtube.com/watch?v=tLRbAxHFMjs">Aim to Head Official</a></p>
+      </div>
+     
     </footer>
-
-    <style>* {
-        /* font-family: "Press Start 2P", Impact, Haettenschweiler,
-          "Arial Narrow Bold", sans-serif; */
-      }
-
-      body {
-        display: flex;
-        justify-content: center;
-      }
-
-      .tvContainer {
-        /* z-index: 10000000 !important;
-
-                margin-top: 2%;
-                overflow: hidden;
-                display: flex;
-                justify-content: center; */
-        background: linear-gradient(297deg, #000000, #3f4b72, #a8b6e3);
-        -webkit-animation: AnimationName 16s ease infinite;
-            -moz-animation: AnimationName 16s ease infinite;
-            animation: AnimationName 16s ease infinite;
-        width: 1000px;
-        height: 600px;
-        /* border-radius: 30%; */
-        /* background-size: 90%; */
-        /* margin-top: ; */
-        /* position: static; */
-        /* padding-right: 20%; */
-
-@-webkit-keyframes AnimationName {
-    0%{background-position:9% 0%}
-    50%{background-position:92% 100%}
-    100%{background-position:9% 0%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:9% 0%}
-    50%{background-position:92% 100%}
-    100%{background-position:9% 0%}
-}
-@keyframes AnimationName {
-    0%{background-position:9% 0%}
-    50%{background-position:92% 100%}
-    100%{background-position:9% 0%}
-}
-      }
-
-      .wagmiPong {
-        /* background: linear-gradient(297deg, #000000, #3f4b72, #a8b6e3); */
-        /* width: 900px; */
-        /* height: 600px; */
-        /* position: static; */
-        /* padding-right: 20%; */
-        margin-top: 6%;
-      }
-
-      .tv {
-        margin-top: -1%;
-        height: 555px;
-        width: 888px;
-        position: absolute;
-        z-index: 300 !important;
-        /* background:url('../public/assets/tv-frame.png'), linear-gradient(297deg, #000000, #3f4b72, #a8b6e3); */
-        background-image: url("/tv-frame.53d66cc0.png");
-        background-size: 100% 100%;
-        padding-left: 10px;
-        margin-left: -10px;
-        overflow: hidden;
-        background-repeat: no-repeat;
-        /* background-clip: border-box; */
-        /* 
-            -webkit-animation: AnimationName 16s ease infinite;
-            -moz-animation: AnimationName 16s ease infinite;
-            animation: AnimationName 16s ease infinite; */
-      }
-
-      .connectButton {
-          margin: auto;
-        height: 40px;
-        text-align: center;
-        width: 290px;
-        border-radius: 10px;
-        border: none;
-      }
-
-      .connectWallet {
-          /* position: absolute; */
-    display: flex;
-    justify-content: center;
-    margin: 27% 17% 0 auto;
-    /* background-color: red; */
-    z-index: 1 !important;
-    text-align: center;  
-      }
-      canvas {
-        display: none;
-        /* visibility: hidden; */
-        /* width: 87%;
-        height: 80%; */
-        margin-top: 10%;
-        /* border-radius: 12%; */
-        z-index: -1000;
-        position: absolute;
-        z-index: 10;
-
-
-        /* margin: 1% 0% 0% -5.3%;
-        width: 612px; */
-        height: 478px;
-
-        margin: 1% 0% 0% -4%;
-    width: 657px;
-
-        /* margin: 1% 0% 0% -4%;
-        width: 700px;
-        height: 478px; */
-        /* margin: 8% 0% 0% 9%; */
-        /* margin: 4% 0% 0% -18%; */
-      }
-
-      /* Desktops and laptops ----------- */
-@media only screen  and (min-width : 1224px) {
-/* Styles */
-
-/* .tvContainer { */
-          /* z-index: 10000000 !important;
-
-                margin-top: 2%;
-                overflow: hidden;
-                display: flex;
-                justify-content: center; */
-          /* background: linear-gradient(297deg, #000000, #3f4b72, #a8b6e3); */
-          /* width: 800px; */
-          /* height: 485px; */
-          /* border-radius: 30%; */
-          /* background-size: 90%; */
-          /* margin-top: ; */
-          /* position: static; */
-          /* padding-right: 20%; */
-        /* } */
-}
-      /* body { */
-      /* position: relative; */
-      @media screen and (min-width: 480px) {
-  
-        .tvContainer {
-          /* z-index: 10000000 !important;
-
-                margin-top: 2%;
-                overflow: hidden;
-                display: flex;
-                justify-content: center; */
-                /* background-color: red; */
-          /* background: linear-gradient(297deg, #000000, #3f4b72, #a8b6e3); */
-          width: 800px;
-          height: 500px;
-          /* border-radius: 30%; */
-          /* background-size: 90%; */
-          /* margin-top: ; */
-          /* position: static; */
-          /* padding-right: 20%; */
-        }
-
-        canvas {
-            /* margin: 1% 0% 0% -5.3%; */
-            margin: 25px 0% 0% -85px;
-        width: 612px;
-        height: 478px;
-        z-index: 10;
-        }
-}</style>
-    
     <script type="text/javascript" src="/main.1f19ae8e.js"></script>
 
-    <script>document.getElementById("year").innerHTML = "<a style='text-decoration: none;' target='_blank' href=\"https://www.twitter.com/afrotonder\" >Afrotonder\u26A1</a>" + new Date().getFullYear().toString(); // window.connectWallet = thisgetUserNFTs</script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    document.getElementsByClassName("wagmiPong")[0].style.display = "flex";
+  }, 300);
+});
+document.getElementById("year").innerHTML = "<a href=\"https://twitter.com/Afrotonder\">Afrotonder\u26A1</a>\n        ".concat(new Date().getFullYear().toString(), " \n");
+document.getElementById("infoToggle").addEventListener("mouseover", function () {
+  console.log("mouse overt");
+  renderModal(true);
+});
+document.getElementById("infoToggle").addEventListener("mouseout", function () {
+  console.log("mouseout");
+  renderModal(false);
+});
+
+function renderModal(userHover) {
+  if (userHover) {
+    document.getElementsByClassName("infoModal")[0].style.display = "flex";
+  } else {
+    document.getElementsByClassName("infoModal")[0].style.display = "none";
+  }
+}</script>
   </body>
 </html>
